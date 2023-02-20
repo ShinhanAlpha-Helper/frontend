@@ -7,6 +7,7 @@ import SettingView from '../views/SettingView.vue'
 import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
 import SettingDetailView from '../views/SettingDetailView'
+import VocaMeaningView from '../views/VocaMeaningView'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/loginerror',
     name: 'loginerror',
     component: LoginErrorView
+  },
+  {
+    path: '/vocameaning',
+    name: 'vocameaning',
+    component: VocaMeaningView
   },
   {
     path: '/login',
