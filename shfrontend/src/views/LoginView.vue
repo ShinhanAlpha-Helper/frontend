@@ -6,7 +6,17 @@
                 아이디 로그인
             </h3>
         </header>
-        <button class="btn">로그인</button>
+        <div class="form-group mb-3">
+                <label for="username">아이디</label>
+                <input type="text" class="form-control" id="username" name="username" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" id="password" name="password" />
+            </div>
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" onclick="login()">로그인</button>
+            </div>
     </div>
 </template>
 
