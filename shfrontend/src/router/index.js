@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginErrorView from '../views/LoginErrorView.vue'
 import LoginView from '../views/LoginView.vue'
 import VocaMainView from '../views/VocaMainView.vue'
+import DailyRankView from '../views/DailyRankView.vue'
 
 const routes = [
   {
@@ -11,6 +12,14 @@ const routes = [
     component: VocaMainView
 
   },
+
+  {
+    path: '/dailyrankview',
+    name: 'dailyrankview',
+    component: DailyRankView
+
+  },
+
   {
     path: '/loginerror',
     name: 'loginerror',
@@ -37,7 +46,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 

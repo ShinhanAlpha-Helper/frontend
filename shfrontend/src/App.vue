@@ -1,7 +1,10 @@
 <template>
-  <nav>
-  </nav>
-  <router-view/>
+  <div>
+    <nav></nav>
+    <div>
+      <router-view/>
+    </div>
+  </div>
 </template>
 
 <style>
