@@ -6,6 +6,9 @@ import VocaMainView from '../views/VocaMainView.vue'
 import SettingView from '../views/SettingView.vue'
 import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
+import SettingDetailView from '../views/SettingDetailView'
+import VocaMeaningView from '../views/VocaMeaningView'
+
 const routes = [
   {
     path: '/vocamain',
@@ -32,6 +35,11 @@ const routes = [
     component: LoginErrorView
   },
   {
+    path: '/vocameaning',
+    name: 'vocameaning',
+    component: VocaMeaningView
+  },
+  {
     path: '/login',
     name: 'login',
     component: LoginView
@@ -45,6 +53,11 @@ const routes = [
     path: '/setting',
     name: 'setting',
     component: SettingView
+  },
+  {
+    path: '/setting/detail',
+    name: 'settingdetail',
+    component: SettingDetailView
   },
   {
     path: '/about',
