@@ -4,7 +4,7 @@ import LoginErrorView from '../views/LoginErrorView.vue'
 import LoginView from '../views/LoginView.vue'
 import VocaMainView from '../views/VocaMainView.vue'
 import DailyRankView from '../views/DailyRankView.vue'
-
+import VocaAllView from '../views/VocaAllView.vue'
 const routes = [
   {
     path: '/vocamain',
@@ -20,6 +20,11 @@ const routes = [
 
   },
 
+  {
+    path: '/vocaall',
+    name: 'vocaall',
+    component: VocaAllView
+  },
   {
     path: '/loginerror',
     name: 'loginerror',
