@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginErrorView from '../views/LoginErrorView.vue'
 import LoginView from '../views/LoginView.vue'
 import VocaMainView from '../views/VocaMainView.vue'
+import SettingView from '../views/SettingView.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/setting',
+    name: 'setting',
+    component: SettingView
   },
   {
     path: '/about',
