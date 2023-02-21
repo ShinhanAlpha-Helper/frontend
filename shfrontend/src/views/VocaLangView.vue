@@ -9,19 +9,19 @@
         <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb" aria-current="page">단어/뜻</li>&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">단어만</li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">뜻만</a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active" aria-current="page">뜻만</li>
             </ol>
             <main>
                 <div class="vocas">
                     <div v-for="(voca, i) in vocas" :key="voca.i">
                         <div>
                             <div class="contents">
-                                <strong>{{ voca.mean }}</strong>
+                                <strong>{{ voca.word }}</strong>
                                 <br>
                                 <div class="meaning-box" @click="showMeaningBox(i)">
                                     <div class="meaning-text">
-                                        {{ voca.word }}
+                                        {{ voca.mean }}
                                     </div>
                                     <div
                                     class="blind-box"

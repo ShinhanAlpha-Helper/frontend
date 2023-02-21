@@ -19,7 +19,9 @@
                             <div class="left-text">
                                 <i class="far fa-star" :class="{ 'fas': note.bookmarked }" @click="toggleBookmark(note)"></i>
                                 <strong class="voca-text">{{ note.title }}
-                                {{ note.content }}</strong>
+                                    <br>
+                                    <div class="voca-mean">{{ note.content }}</div>
+                                </strong>
                             </div>
                             <b class="voca-del">
                                 <a href="" @click.prevent="delItem(i)">삭제</a>
@@ -52,13 +54,6 @@
 import axios from 'axios';
 
 export default {
-    // data() {
-    //     return {
-    //         vocas: [],
-    //         bookmarks: []
-    //     }
-    // },
-    // el: '#app',
     data() {
         return{
             notes: [],
@@ -66,12 +61,6 @@ export default {
         }
     },
     created() {
-        // this.$axios.get("/note").then((data) => {
-        //     this.notes = data;
-        //     console.log(data);
-        // }).catch((error) => {
-        //     console.log(error);
-        // })
         const token = localStorage["token"];
         if (!token) {
             console.error('Token not found');
@@ -199,6 +188,12 @@ h3 {
 }
 .voca-text {
     margin-left: 5px;
+    text-align: left;
+    font-size: 15px;
+}
+.voca-mean {
+    font-size: 13px;
+    color: #979797;
 }
 .voca-del {
     margin-left: auto;
