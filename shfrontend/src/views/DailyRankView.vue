@@ -1,4 +1,3 @@
-
 <template>
     <div class="page">
         <div class="wrap">
@@ -11,39 +10,41 @@
             <br>
             <img alt="Vue logo" src="../assets/rankingimg.png">
             <br><br><br>
-<!-- 
-        <button class="btn"><p :style="{ color : 'black' }">오늘</p></button>
-        <button class="btn"><p :style="{ color : 'black' }">주간</p></button>
-        <br><br>
-        <img alt="Vue logo" src="../assets/medal1.png" ><h2>예수금</h2>
-        <br>
-        <img alt="Vue logo" src="../assets/medal2.png"><h2>상한가</h2>
-        <br>
-        <img alt="Vue logo" src="../assets/medal3.png"><h2>공매도</h2> -->
-            <div class="tab">
-                <button
-                    v-for="(tab, index) in tabList"
-                    :key="index"
-                    @click.prevent="currentTab = index"
-                    :class="{'active' : currentTab === index}"
-                >
-                {{ tab.name }}
-                </button>
-            </div>
-   
-            <ul class="tab-content" v-if="currentTab === 0">
-            <!-- <li v-for="(item, index) in employList" :key="index"> -->
-                <img alt="Vue logo" src="../assets/medal1.png" >예수금<hr>
-                <img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
-                <img alt="Vue logo" src="../assets/medal3.png">공매도<hr>
-            <!-- </li> -->
-            </ul>
-            <ul class="tab-content" v-if="currentTab === 1">
-                <img alt="Vue logo" src="../assets/medal1.png" >인플레이션<hr>
-                <img alt="Vue logo" src="../assets/medal2.png">선물<hr>
-                <img alt="Vue logo" src="../assets/medal3.png">공모주<hr>
-            </ul>
+
+<!--
+                <tabs>
+                    <tab name="오늘" :selected="true">
+                        <img alt="Vue logo" src="../assets/medal1.png" >예수금<hr>
+                        <img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
+                        <img alt="Vue logo" src="../assets/medal3.png">공매도<hr>
+                    </tab>
+                    <tab name="주간">
+                        <img alt="Vue logo" src="../assets/medal1.png" >인플레이션<hr>
+                        <img alt="Vue logo" src="../assets/medal2.png">선물<hr>
+                        <img alt="Vue logo" src="../assets/medal3.png">공모주<hr>
+                    </tab>
+                </tabs> -->
+         
+
         </div>
+        <div class="d-flex justify-content-center">
+            <b-tabs content-class="mt-3">
+                <b-tab title="오늘" active>
+                        <img alt="Vue logo" src="../assets/medal1.png">예수금<hr>
+                        <img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
+                        <img alt="Vue logo" src="../assets/medal3.png">공매도<hr>
+                </b-tab>
+                <b-tab title="주간">
+                        <img alt="Vue logo" src="../assets/medal1.png" >인플레이션<hr>
+                        <img alt="Vue logo" src="../assets/medal2.png">선물<hr>
+                        <img alt="Vue logo" src="../assets/medal3.png">공모주<hr>
+
+
+                </b-tab>
+                
+            </b-tabs>
+        </div>
+    
         <footer>
             <div id="menu-wrapper">
                 <table>
@@ -59,30 +60,43 @@
                 </table>
             </div>
         </footer>
-  </div>
+    </div>
 </template>
 
 
 <script>
 export default {
-  name: "Tab",
-  data() {
-    return {
-      currentTab: 0,
-      tabList: [
-        { name: "오늘" },
+  data() { /* ... */ },
 
-        { name: "주간" },
-     
-      ],
-    };
-  },
-  methods: {},
-};
+  // This will disable all Vue.js 2 legacy features for your component
+  compatConfig: { MODE: 3 }
+
+ // ... rest of your component configuration ... 
+}
 </script>
+
 
 <style scoped>
 
+
+.box{
+    text-align:center;
+    display:inline-block;
+    }
+
+
+
+
+.mt-3{
+    float:none;
+    display:inline-block;
+    zoom:1;
+}
+
+.container 
+    { 
+    padding-top: 40px; 
+    }
 
 .text {
     color: #FB0000;
@@ -107,18 +121,15 @@ export default {
 .tab button{
     background-color: white;
 }
-
 footer {
     z-index: 100;
 }
-
 a {
     color: black;
     text-decoration: none;
     font-weight: bold;
     font-size: 12px;
 }
-
 #menu-wrapper {
     overflow-x: auto;
     justify-content: center;
@@ -127,13 +138,11 @@ a {
     border-collapse: collapse;
     height: 60px;
 }
-
 table {
     border-collapse: collapse;
     max-width: 375px;
     height: 60px;
 }
-
 th {
     text-align: center;
     background-color: #ffffff;
@@ -143,4 +152,9 @@ th {
     padding: 0 15px;
 }
 
+.nav.nav-tabs {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
 </style>
