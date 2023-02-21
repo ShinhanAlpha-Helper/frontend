@@ -101,6 +101,11 @@ export default {
 </script>
 
 <style scoped>
+.page {
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 375px;
+}
 .btn {
     /* position: absolute; */
     width: 253px;

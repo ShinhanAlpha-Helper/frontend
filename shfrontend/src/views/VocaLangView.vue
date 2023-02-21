@@ -6,7 +6,7 @@
             단어장
             </h3>
         </header>
-        <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
+        <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb" aria-current="page">단어/뜻</li>&nbsp;&nbsp;
                 <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
