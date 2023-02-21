@@ -1,31 +1,45 @@
 <template>
-    <div class="page">
-   
+<div class="page">
       <header>
             <i class="fa-solid fa-xmark fa-2x fa-pull-right" onclick=""></i>
-            <h3>
-                아이디 로그인
-            </h3>
-            
-            <h5>공동인증서 비밀번호를 입력해주세요.</h5>
+             <h3>
+                회원가입
+            </h3>          
         </header>
-        <div class="form-group mb-3">
-                <label for="username">아이디</label>
-                <input type="text" class="form-control" id="username" name="username" />
-            </div>
-            <div class="form-group mb-3">
-                <label for="password">비밀번호</label>
-                <input type="password" class="form-control" id="password" name="password" />
-            </div>
-            <div class="text-right">
-                <button type="button" class="btn btn-primary" onclick="login()">로그인</button>
-            </div>
+        
+<div class="background"><br><br>
+  <form>
+
+    <div class="form-group">
+        <label for="idInput"></label>
+        <input type="text" class="form-control" id="idInput" placeholder="아이디">
+    </div>
+    <div class="form-group">
+        <label for="pwInput"></label>
+        <input type="password" class="form-control" id="pwInput" placeholder="비밀번호">
+    </div>
+
+    <div class="form-group">
+        <label for="pwConfirm"></label>
+        <input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호 확인">
+    </div>
+  
+    <div class="form-group">
+        <label for="E-mail"></label>
+        <input type="email" class="form-control" id="pwConfirm" placeholder="E-mail">
+    </div>
+    <br>
+    <div class="text-right">
+        <button type="button" class="btn btn-primary" onclick="signin()">회원가입</button>
+    </div>
 
 
+</form></div>
 
     <footer>
             <div id="menu-wrapper">
                 <table>
+               
                     <tr>
                         <th><a href="#">X</a></th>
                         <th><a href="#">홈</a> </th>
@@ -38,17 +52,44 @@
                 </table>
             </div>
         </footer>
-    </div>
+
+</div>
 </template>
 
 <script>
-
 export default {
-
-}
+    data() {
+    
+    },
+    methods: {
+    	
+   
+    }}
 </script>
 
+
+
 <style scoped>
+
+.background {
+    background-color: #E9F1FE;
+    height: 530px;
+
+
+}
+
+
+
+h3 {
+    /* text-align: left;
+    font-weight: bold;
+    font-size: px; */
+    text-align: left;
+    margin-left: 20px;
+}
+.page header i {
+    margin-right: 20px;
+}
 
 
 .page {
@@ -92,8 +133,6 @@ footer {
                 padding: 0 15px;
             }
   
-                    
-
-
+                
 
 </style>
