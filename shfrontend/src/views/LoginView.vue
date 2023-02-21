@@ -6,45 +6,23 @@
                 아이디 로그인
             </h3>
         </header>
-        <body class="mid-text">
-            <div class="mx-3">
-                아이디
-                <div class="mx-1">
-                    <v-text-field
-                        placeholder="userId"
-                        v-model="userId"
-                        required
-                    ></v-text-field>
-                </div>
+        <div class="loginpage">
+            <p class="main-text">아이디 로그인</p>
+            <p class="sub-text">아이디와 비밀번호를 입력해주세요.</p>
+            <br>
+            <div>
+                <input style="background-color: #E9F1FE;" type="text" v-model="username" placeholder="아이디"/>
+                <div class="underline"></div>
+                <input style="background-color: #E9F1FE;" type="password" v-model="password" placeholder="비밀번호"/>
+                <div class="underline"></div>
             </div>
-            <div class="mx-3">
-                비밀번호
-                <div class="mx-1">
-                    <v-text-field
-                        placeholder="userPassword"
-                        type="password"
-                        v-model="userPassword"
-                        required
-                    ></v-text-field>
-                </div>
-            </div>
-            <!-- <div>
-                <p class="main-text">아이디 로그인</p>
-                <p calss="sub-text">아이디와 비밀번호를 입력해주세요.</p>
-                <div class="form-group mb-3">
-                    <label for="username">아이디</label>
-                    <input type="text" class="form-control" id="username" name="username" />
-                </div>
-                <div class="form-group mb-3">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" name="password" />
-                </div>
+            <div class="signup">
                 <a href="#">회원가입</a>
-                <div class="text-right">
-                    <button type="button" class="btn btn-primary" onclick="login()">로그인</button>
-                </div>
-            </div> -->
-        </body>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" onclick="login()">로그인</button>
+            </div>
+        </div>
         <footer>
             <div id="menu-wrapper">
                 <table>
@@ -106,7 +84,24 @@ export default {
     margin-top: 30px;
     max-width: 375px;
 }
+h3 {
+    text-align: left;
+    margin-left: 20px;
+}
+.page header i {
+    margin-right: 20px;
+}
+.loginpage {
+    padding: 90px 30px 0 30px;
+    background-color: #E9F1FE;
+    height: calc(100vh - 132px);
+}
+.signup {
+    text-align: right;
+    margin: 10px 10px;
+}
 .btn {
+    margin-top: 10px;
     /* position: absolute; */
     width: 253px;
     height: 39px;
@@ -120,21 +115,30 @@ export default {
     text-align: center;
     font-size: 15px;
 }
-.mid-text {
-    background-color: #E9F1FE;
-    position: absolute;
-    width: 187px;
-    height: 48px;
-    left: 53px;
-    top: 135px;
-}
 .main-text {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    text-align: left;
+    color: black;
 }
 .sub-text {
-    font-size: 12px;
+    font-size: 15px;
+    text-align: left;
+    color: black;
 }
+.underline {
+    height: 1px;
+    width: 230px;
+    background-color: black;
+    margin: 0px 0px 25px 45px;
+}
+input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
 
 footer {
     z-index: 100;
@@ -170,4 +174,5 @@ th {
     font-weight: bold;
     padding: 0 15px;
 }
+
 </style>
