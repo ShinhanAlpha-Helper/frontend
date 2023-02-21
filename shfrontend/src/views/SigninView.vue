@@ -7,34 +7,34 @@
             </h3>          
         </header>
         
-<div class="background"><br><br>
+<div class="signinpage">
   <form>
+   
 
-    <div class="form-group">
-        <label for="idInput"></label>
-        <input type="text" class="form-control" id="idInput" placeholder="아이디">
+     <div>
+        <input style="background-color: #E9F1FE;" type="text" v-model="inputusername" placeholder="아이디"/>
+        <div class="underline"></div>
+        <input style="background-color: #E9F1FE;" type="password" v-model="inputpassword" placeholder="비밀번호"/>
+        <div class="underline"></div>
+        <input style="background-color: #E9F1FE;" type="password" v-model="pwconfirm" placeholder="비밀번호 확인"/>
+        <div class="underline"></div>
+        <input style="background-color: #E9F1FE;" type="email" v-model="email" placeholder="E-mail"/>
+        <div class="underline"></div>
+        
+        
     </div>
-    <div class="form-group">
-        <label for="pwInput"></label>
-        <input type="password" class="form-control" id="pwInput" placeholder="비밀번호">
-    </div>
-
-    <div class="form-group">
-        <label for="pwConfirm"></label>
-        <input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호 확인">
-    </div>
+    
   
-    <div class="form-group">
-        <label for="E-mail"></label>
-        <input type="email" class="form-control" id="pwConfirm" placeholder="E-mail">
-    </div>
+   
     <br>
     <div class="text-right">
         <button type="button" class="btn btn-primary" onclick="signin()">회원가입</button>
     </div>
 
 
-</form></div>
+</form>
+</div>
+
 
     <footer>
             <div id="menu-wrapper">
@@ -91,6 +91,51 @@ h3 {
     margin-right: 20px;
 }
 
+.signinpage {
+    padding: 90px 30px 0 30px;
+    background-color: #E9F1FE;
+    height: calc(100vh - 132px);
+}
+
+.underline {
+    height: 1px;
+    width: 230px;
+    background-color: black;
+    margin: 0px 0px 25px 45px;
+}
+input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.btn {
+    margin-top: 10px;
+    /* position: absolute; */
+    width: 253px;
+    height: 39px;
+    /* left: 31px;
+    top: 416px; */
+    background-color: #3647F2;
+    border-radius: 19.5px;
+    border-color:#3647F2;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+.main-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+.sub-text {
+    font-size: 15px;
+    text-align: left;
+    color: black;
+}
 
 .page {
     margin: 0 auto;
@@ -132,6 +177,7 @@ footer {
                 font-weight: bold;
                 padding: 0 15px;
             }
+
   
                 
 

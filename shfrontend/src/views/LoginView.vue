@@ -1,29 +1,29 @@
 <template>
     <div class="page">
-   
-      <header>
+        <header>
             <i class="fa-solid fa-xmark fa-2x fa-pull-right" onclick=""></i>
             <h3>
                 아이디 로그인
             </h3>
-            
-            <h5>공동인증서 비밀번호를 입력해주세요.</h5>
         </header>
-        <div class="form-group mb-3">
-                <label for="username">아이디</label>
-                <input type="text" class="form-control" id="username" name="username" />
+        <div class="loginpage">
+            <p class="main-text">아이디 로그인</p>
+            <p class="sub-text">아이디와 비밀번호를 입력해주세요.</p>
+            <br>
+            <div>
+                <input style="background-color: #E9F1FE;" type="text" v-model="username" placeholder="아이디"/>
+                <div class="underline"></div>
+                <input style="background-color: #E9F1FE;" type="password" v-model="password" placeholder="비밀번호"/>
+                <div class="underline"></div>
             </div>
-            <div class="form-group mb-3">
-                <label for="password">비밀번호</label>
-                <input type="password" class="form-control" id="password" name="password" />
+            <div class="signup">
+                <a href="#">회원가입</a>
             </div>
-            <div class="text-right">
+            <div>
                 <button type="button" class="btn btn-primary" onclick="login()">로그인</button>
             </div>
-
-
-
-    <footer>
+        </div>
+        <footer>
             <div id="menu-wrapper">
                 <table>
                     <tr>
@@ -41,59 +41,139 @@
     </div>
 </template>
 
+
 <script>
-
 export default {
+  data() {
+    return {
+      userId: null,
+      userPassword: null,
+    };
+  },
+  methods: {
+    loginSubmit() {
+      let saveData = {};
+      saveData.userId = this.userId;
+      saveData.userPassword = this.userPassword;
 
-}
+      try {
+        this.$axios
+          .post(HOST + "/signin", JSON.stringify(saveData), {
+            headers: {
+              "Content-Type": `application/json`,
+            },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              // 로그인 성공시 처리해줘야할 부분
+              this.$store.commit("login", res.data);
+              this.$router.push("이동할 페이지 path");
+            }
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  
+};
 </script>
 
 <style scoped>
-
-
 .page {
     margin: 0 auto;
     margin-top: 30px;
     max-width: 375px;
 }
+h3 {
+    text-align: left;
+    margin-left: 20px;
+}
+.page header i {
+    margin-right: 20px;
+}
+.loginpage {
+    padding: 90px 30px 0 30px;
+    background-color: #E9F1FE;
+    height: calc(100vh - 132px);
+}
+.signup {
+    text-align: right;
+    margin: 10px 10px;
+}
+.btn {
+    margin-top: 10px;
+    /* position: absolute; */
+    width: 253px;
+    height: 39px;
+    /* left: 31px;
+    top: 416px; */
+    background-color: #3647F2;
+    border-radius: 19.5px;
+    border-color:#3647F2;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+.main-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+.sub-text {
+    font-size: 15px;
+    text-align: left;
+    color: black;
+}
+.underline {
+    height: 1px;
+    width: 230px;
+    background-color: black;
+    margin: 0px 0px 25px 45px;
+}
+input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
 
 footer {
-                z-index: 100;
-            }
+    z-index: 100;
+}
 
-            a {
-                color: black;
-                text-decoration: none;
-                font-weight: bold;
-                font-size: 12px;
-            }
+a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+}
 
-            #menu-wrapper {
-                overflow-x: auto;
-                justify-content: center;
-                position: fixed;
-                bottom: 0;
-                border-collapse: collapse;
-                height: 60px;
-            }
+#menu-wrapper {
+    overflow-x: auto;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    border-collapse: collapse;
+    height: 60px;
+}
 
-            table {
-                border-collapse: collapse;
-                max-width: 375px;
-                height: 60px;
-            }
+table {
+    border-collapse: collapse;
+    max-width: 375px;
+    height: 60px;
+}
 
-            th {
-                text-align: center;
-                background-color: #ffffff;
-                color: #fff;
-                text-transform: uppercase;
-                font-weight: bold;
-                padding: 0 15px;
-            }
-  
-                    
-
-
+th {
+    text-align: center;
+    background-color: #ffffff;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0 15px;
+}
 
 </style>
