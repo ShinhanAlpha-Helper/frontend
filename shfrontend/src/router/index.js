@@ -6,15 +6,22 @@ import VocaMainView from '../views/VocaMainView.vue'
 import SettingView from '../views/SettingView.vue'
 import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
-import SettingDetailView from '../views/SettingDetailView'
-import VocaMeaningView from '../views/VocaMeaningView'
-import VocaLangView from '../views/VocaLangView'
+import SettingDetailView from '../views/SettingDetailView.vue'
+import VocaMeaningView from '../views/VocaMeaningView.vue'
+import SigninView from '../views/SigninView.vue'
+import VocaLangView from '../views/VocaLangView.vue'
 
 const routes = [
   {
     path: '/vocamain',
     name: 'vocamain',
     component: VocaMainView
+
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: SigninView
 
   },
 

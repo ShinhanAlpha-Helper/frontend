@@ -11,21 +11,6 @@
             <img alt="Vue logo" src="../assets/rankingimg.png">
             <br><br><br>
 
-<!--
-                <tabs>
-                    <tab name="오늘" :selected="true">
-                        <img alt="Vue logo" src="../assets/medal1.png" >예수금<hr>
-                        <img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
-                        <img alt="Vue logo" src="../assets/medal3.png">공매도<hr>
-                    </tab>
-                    <tab name="주간">
-                        <img alt="Vue logo" src="../assets/medal1.png" >인플레이션<hr>
-                        <img alt="Vue logo" src="../assets/medal2.png">선물<hr>
-                        <img alt="Vue logo" src="../assets/medal3.png">공모주<hr>
-                    </tab>
-                </tabs> -->
-         
-
         </div>
         <div class="d-flex justify-content-center">
             <b-tabs content-class="mt-3">
@@ -38,10 +23,7 @@
                         <img alt="Vue logo" src="../assets/medal1.png" >인플레이션<hr>
                         <img alt="Vue logo" src="../assets/medal2.png">선물<hr>
                         <img alt="Vue logo" src="../assets/medal3.png">공모주<hr>
-
-
                 </b-tab>
-                
             </b-tabs>
         </div>
     
@@ -67,25 +49,16 @@
 <script>
 export default {
   data() { /* ... */ },
-
-  // This will disable all Vue.js 2 legacy features for your component
   compatConfig: { MODE: 3 }
-
- // ... rest of your component configuration ... 
 }
 </script>
 
-
 <style scoped>
-
 
 .box{
     text-align:center;
     display:inline-block;
     }
-
-
-
 
 .mt-3{
     float:none;
