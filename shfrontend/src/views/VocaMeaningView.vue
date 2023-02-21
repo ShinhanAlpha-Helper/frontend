@@ -6,7 +6,7 @@
             단어장
             </h3>
         </header>
-        <body style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
+        <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb" aria-current="page">단어/뜻</li>&nbsp;&nbsp;
                 <li class="breadcrumb active" aria-current="page">단어만</li>&nbsp;&nbsp;
@@ -19,13 +19,21 @@
                             <div class="contents">
                                 <strong>{{ voca.mean }}</strong>
                                 <br>
-                                <p>{{ voca.word }}</p>
+                                <div class="meaning-text">
+                                    {{ voca.word }}
+                                </div>
+                                <div
+                                class="meaning-box"
+                                :style="{ display: voca.showMeaning ? 'block' : 'none' }"
+                                @click="showMeaningBox(index)"
+                                >
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-        </body>
+        </nav>
         <footer>
             <div id="menu-wrapper">
                 <table>
@@ -44,7 +52,6 @@
     </div>
 </template>
 
-
 <script>
 export default {
     data() {
@@ -52,42 +59,85 @@ export default {
             vocas: [
                 {
                     word: '상한가',
-                    mean: '상한가 뜻'
+                    mean: '상한가 뜻',
+                    showMeaning: true,
                 },
                 {
                     word: '매도',
-                    mean: '매도 뜻'
+                    mean: '매도 뜻',
+                    showMeaning: true,
                 },
                 {
                     word: '매수',
-                    mean: '매수 뜻'
+                    mean: '매수 뜻',
+                    showMeaning: true,
                 },
                 {
                     word: '선물',
-                    mean: '선물 뜻'
+                    mean: '선물 뜻',
+                    showMeaning: true,
                 },
                 {
                     word: '주식',
-                    mean: '주식 뜻'
+                    mean: '주식 뜻',
+                    showMeaning: true,
                 },
         ]
                 
         }
     },
+    methods: {
+      showMeaningBox(index) {
+        this.vocas[index].showMeaning = !this.vocas[index].showMeaning;
+      },
+    },
 }
 </script>
 
 <style>
+.page {
+    margin-top: 30px;
+}
 .breadcrumb {
     font-size: 11px;
 }
+.page header i {
+    margin-left: 20px;
+}
 h3 {
     font-size: 15;
-    margin-right:30px;
+    margin-right:50px;
 }
 .contents {
     text-align: left;
 }
+.contents strong {
+    font-size: 15px;
+}
+.meaning-box {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 286px;
+    height: 36px;
+    background-color: #E8EDFF;
+    display: none;
+    cursor: pointer;
+}
+.meaning-text {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+/* .meaning-text {
+    position: absolute;
+    top: 50%;
+    margin-left: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+} */
+
+
 p {
     margin-top: 10px;
     color: grey
