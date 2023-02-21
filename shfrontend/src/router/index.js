@@ -8,6 +8,7 @@ import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
 import SettingDetailView from '../views/SettingDetailView'
 import VocaMeaningView from '../views/VocaMeaningView'
+import VocaLangView from '../views/VocaLangView'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/vocameaning',
     name: 'vocameaning',
     component: VocaMeaningView
+  },
+  {
+    path: '/vocalang',
+    name: 'vocalang',
+    component: VocaLangView
   },
   {
     path: '/login',
