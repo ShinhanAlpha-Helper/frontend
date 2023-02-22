@@ -2,7 +2,7 @@
     <div class="page">
         <div class="wrap">
             <header>
-                <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" onclick=""></i>
+                <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click.prevent="this.$router.replace({path:'/vocamain'});"></i>
                 <h2>
                     단어 랭킹
                 </h2>

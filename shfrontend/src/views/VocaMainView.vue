@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click="pageLink"></i>
+            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click.prevent="this.$router.replace({path:'/'});"></i>
             <h3>
             나만의 단어장
             </h3>
@@ -9,13 +9,13 @@
         <br>
         <img alt="Vue logo" src="../assets/mainimg.png">
         <br>
-        <button class="btn" @click.prevent="pageLink()">
+        <button class="btn" @click.prevent="this.$router.replace({path:'/vocaall'});">
             <p :style="{ color : 'white' }">모든 단어 보기</p>
         </button>
-        <button class="btn">
+        <button class="btn" @click.prevent="this.$router.replace({path:'/bookmark'});">
             <p :style="{ color : 'white' }">즐겨찾기 단어 보기</p>
         </button>
-        <button class="btn">
+        <button class="btn" @click.prevent="this.$router.replace({path:'/dailyrank'});">
             <p :style="{ color : 'white' }"> 단어 랭킹 보기</p>
         </button>
     </div>
@@ -38,12 +38,6 @@
 
 <script>
 export default {
-    methods: {
-        pageLink() {
-            console.log('test');
-            this.$router.replace({path:'/vocaall'});
-        }
-    }
 }
 </script>
 

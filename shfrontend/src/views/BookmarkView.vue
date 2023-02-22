@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i>
+            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click.prevent="this.$router.replace({path:'/vocamain'});"></i>
             <h3>
             즐겨찾기 단어
             </h3>
