@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <h5>편의 기능<i class="fa-solid fa-x"></i></h5>
+            <h5>편의 기능<router-link to="/setting"><i class="fa-solid fa-x"></i></router-link></h5>
             <hr>
         </header>
         <nav>
@@ -15,7 +15,7 @@
                     <hr>    
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
-                <div class="list" v-if="item.option===2">
+                <div class="list" v-else-if="item.option===2">
                     <div class="contents">
                         <span>{{ item.title }}</span>
                         <br>
@@ -25,6 +25,18 @@
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
                         <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                    </div>
+                </div>
+                <div class="list" v-else>
+                    <div class="contents">
+                        <span>{{ item.title }}</span>
+                        <br>
+                        <p>{{ item.content }}</p>
+                    </div>
+                    <hr>    
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                     </div>
                 </div>
             </li>
@@ -63,12 +75,12 @@ export default {
                     content: '위젯에 보여지는 지수/종목정보 항목을 설정할 수 있습니다.',
                 },
                 {
-                    option: 2,
+                    option: 3,
                     title: '단어검색 기능 설정',
                     content: '단어 검색 기능을 실행 합니다.',
                 },
                 {
-                    option: 2,
+                    option: 3,
                     title: '단어장 기능 설정',
                     content: '단어장 기능을 실행 합니다.',
                 },
@@ -165,6 +177,7 @@ p {
     position: relative;
     margin-right: 10px;
     top: 0px;
+    color: black;
 }
 .fa-chevron-right {
     color: grey;

@@ -4,7 +4,7 @@
         <nav>
             <div class="main">
                 <img src="../assets/main/main.png">
-                <button class="menu" onclick=""></button>
+                <router-link to="/menu"><button class="menu"></button></router-link>
             </div>
             <!-- 모달창 -->
             <transition name="fade" v-if="flag === 'true'">
