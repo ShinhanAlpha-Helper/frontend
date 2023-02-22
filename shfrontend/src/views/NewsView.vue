@@ -106,23 +106,23 @@ export default {
 
     },
     methods: {
-        getDomesticNews() {
-        fetch("http://127.0.0.1:8000/news/domestic")
-            .then((res) => res.json())
-            .then((data) => {
-            this.newsList = data.results.reverse();
+        domesticnews() {
+            fetch("http://127.0.0.1:8000/news/domestic")
+                .then((res) => res.json())
+                .then((data) => {
+                this.newsList = data.results.reverse();
             });
         },
-        getOverseasNews() {
-        fetch("http://127.0.0.1:8000/news/overseas")
-            .then((res) => res.json())
-            .then((data) => {
-            this.newsList = data.results.reverse();
+        overseasnews() {
+            fetch("http://127.0.0.1:8000/news/overseas")
+                .then((res) => res.json())
+                .then((data) => {
+                this.newsList = data.results.reverse();
             });
         },
-        reloadNews() {
-        this.getDomesticNews();
-        this.getOverseasNews();
+        newsreload() {
+            this.getDomesticNews();
+            this.getOverseasNews();
         },
     },
     // methods: {
