@@ -155,7 +155,9 @@ export default {
 
 <style scoped>
 .page {
+    margin: 0 auto;
     margin-top: 30px;
+    max-width: 375px;
 }
 .breadcrumb {
     font-size: 11px;
