@@ -12,10 +12,10 @@
                     <div v-for="(bookmark, i) in bookmarks" :key="bookmark.i">
                         <div class="voca-item">
                             <div class="left-text">
-                                <i class="far fa-star" style="color: yellow;" @click="toggleBookmark(bookmark.note)"></i>
-                                <strong class="voca-text">{{ bookmark.note_title }}
+                                <i class="far fa-star" :class="{ 'fas': bookmark.bookmarked }" @click="toggleBookmark(bookmark)"></i>
+                                <strong class="voca-text">{{ bookmark.title }}
                                     <br>
-                                    <div class="voca-mean">{{ bookmark.note_content }}</div>
+                                    <div class="voca-mean">{{ bookmark.content }}</div>
                                 </strong>
                             </div>
                         </div><hr>
@@ -48,7 +48,8 @@ import axios from 'axios';
 export default {
     data() {
         return{
-            bookmarks: [],
+            notes: [],
+            bookmarks: []
         }
     },
     created() {
@@ -65,43 +66,42 @@ export default {
             },
         })
         .then(response => {
-            this.bookmarks = response.data.results;
-            console.log(response.data.results);
+            this.notes = response.data.results;
         })
         .catch(error => {
             console.error(error);
         });
     },
     methods: {
-        toggleBookmark(noteid) {
-            const token = localStorage["token"];
-            if (!token) {
-                console.error('Token not found');
-                return;
+        toggleBookmark(note) {
+            note.bookmarked = !note.bookmarked;
+            if (note.bookmarked) {
+                this.bookmarks.push(note);
+            } else {
+                const index = this.bookmarks.indexOf(note);
+                this.bookmarks.splice(index, 1);
             }
-            axios({
-                method: 'post',
-                url: 'http://127.0.0.1:8000/note/bookmark',
-                headers: {
-                    Authorization: 'JWT ' + token,
-                },
-                data: {
-                    note: noteid,
-                },
-            })
-            .then(response => {
-                console.log(response.status);
-            })
-            .catch(error => {
-                console.error(error);
-            });
         },
     },
     mounted() {
-
+        const savedBookmarks = localStorage.getItem('bookmarks');
+        if (savedBookmarks) {
+            this.bookmarks = JSON.parse(savedBookmarks);
+            this.bookmarks.forEach(bookmark => {
+            const note = this.notes.find(n => n.id === bookmark.id);
+            if (note) {
+                note.bookmarked = true;
+            }
+            });
+        }
     },
     watch: {
-
+        bookmarks: {
+            handler: function(bookmarks) {
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            },
+            deep: true
+        }
     }
 }
 </script>
