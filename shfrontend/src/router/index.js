@@ -6,6 +6,7 @@ import VocaMainView from '../views/VocaMainView.vue'
 import SettingView from '../views/SettingView.vue'
 import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
+import SplashView from '../views/SplashView'
 import SettingDetailView from '../views/SettingDetailView.vue'
 import VocaMeaningView from '../views/VocaMeaningView.vue'
 import SignupView from '../views/SignupView.vue'
@@ -63,6 +64,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/splash',
+    name: 'splash',
+    component: SplashView
   },
   {
     path: '/',
