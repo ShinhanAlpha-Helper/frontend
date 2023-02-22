@@ -17,11 +17,11 @@
                     <div v-for="(note, i) in notes" :key="note.i">
                         <div>
                             <div class="contents">
-                                <strong>{{ note.content }}</strong>
+                                <strong>{{ note.title }}</strong>
                                 <br>
                                 <div class="answer-box" @click="showMeaningBox(i)">
                                     <div class="answer-text">
-                                        {{ note.title }}
+                                        {{ note.content }}
                                     </div>
                                     <div
                                     class="blind-box"
@@ -109,7 +109,7 @@ h3 {
     text-align: left;
 }
 .contents strong {
-    font-size: 13px;
+    font-size: 15px;
 }
 .answer-box {
     margin-top: 5px;
@@ -129,7 +129,7 @@ h3 {
 }
 .answer-text {
     color: black;
-    font-size: 15px;
+    font-size: 13px;
     width: 100%;
     height: 100%;
     margin: 10px 0px 0px 0px;
