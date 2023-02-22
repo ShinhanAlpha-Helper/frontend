@@ -1,20 +1,82 @@
 <template>
    <div class="page">
         <header>
-             <div class="sticky-top" style="padding-bottom:0px; background-color: #3F81D7; width: 375px; height: 82px;">
+        <div>
+            
+             <div class="sticky-top" style="padding-bottom:0px; background-color: #3F81D7; width: 100%; height: 82px;">
                 <input type="text" placeholder="메뉴 · 종목 검색" style="border-radius: 5px; margin-left: 20px; margin-top: 10px;">
                 <!-- <font-awesome-icon icon="fa-solid fa-magnifying-glass-plus" /> -->
 
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <!-- <i class="fa-solid fa-magnifying-glass-plus"></i> -->
+                <!-- <button>
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                </button> -->
+                <!-- <button class="btn"><i class="fa-solid fa-magnifying-glass-plus fa-sm"></i></button> -->
+                <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style="border:none; background-color: #3F81D7;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
                 <i class="fa-regular fa-bell"></i>
                 <i class="fa-solid fa-gear"></i>
-
                 <div class="topnavs">
                     <div class="topnav">매매</div><div class="topnav">상품</div><div class="topnav">뱅킹/공모주</div><div class="topnav">고객센터</div>
                 </div>
             </div>
+
+                <!-- <div class="topnavs">
+                    <div class="topnav">매매</div><div class="topnav">상품</div><div class="topnav">뱅킹/공모주</div><div class="topnav">고객센터</div>
+                </div> -->
+            </div>
         </header>
         <main>
+
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">검색창</h1>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">검색</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">단어뜻</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Hide this modal and show the first with the button below.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">add</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">단어장에추가</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    단어장에 추가되었습니다.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
             <div class="row">
                 <div class="col-4 side-left">
                     <div>
@@ -30,11 +92,12 @@
                     </div>
                 </div>
                 <div class="col-8 side-right">
-                    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                        <div style="background-color: #F7F8FA; padding: 15px; text-align:left;"><strong>국내주식</strong></div>
+                    <div style = "text-align:left;" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                        <div style="background-color: #F7F8FA; padding: 15px; "><strong>국내주식</strong></div>
                         <h6 id="list-item-1" style="padding-top: 15px; text-align:left;"><strong>종목찾기</strong></h6>
                         <hr>
-                        <p>실시간종목순위</p><p>신한인기종목</p><p>외국인/기관 순매수</p><p>테마(섹터)순위</p><p>신한리서치추천</p><p>신규리서치추천</p><p>신규상장종목</p><p>공매도/대차</p><p>시장조치</p><p>ETF/ETN</p>
+                        
+                        <p style = text-aglin: left>실시간종목순위</p><p>신한인기종목</p><p>외국인/기관 순매수</p><p>테마(섹터)순위</p><p>신한리서치추천</p><p>신규리서치추천</p><p>신규상장종목</p><p>공매도/대차</p><p>시장조치</p><p>ETF/ETN</p>
                         <h6 id="list-item-1" style="padding-top: 15px; text-align:left;"><strong>종목조건검색</strong></h6>
                         <hr>
                         <p>간편조건검색</p><p>조건검색</p><p>차트패턴검색</p>
@@ -188,7 +251,7 @@
         </footer>
         
 
-       </div>
+    </div>
    
 </template>
 
@@ -200,48 +263,50 @@ export default {
 </script>
 
 <style scoped>
-    .box1 {
 
+    .page {
+        margin: 0 auto;
+        /* margin-top: 30px; */
+        max-width: 375px;
+    }
+
+    .box1 {
         top: 0;
-       
-        /* line-height: 50px; */
-        
+            /* line-height: 50px; */
     }
 
     list-example {
         padding-top: 15px;
         background-color: #F0F1F5; 
-        width: 105px;}
-
-    body {
-            margin: 0 auto;
-            max-width: 375px;
-        }
+        width: 105px;
+    }
             
     header {
-            position: fixed;
-            z-index: 100;
-            top: 0;
-            width: 100%;
-        }
+        position: fixed;
+        z-index: 100;
+        /* top: 0; */
+        /* width: 100%; */
+    }
          
 
     .topnavs {
-                text-align: center;
-            }
+        text-align: center;
+    }
+
     .topnav {
-            margin: 10px 10px;
-            display: inline-block;
-            color: #ffffff;
-            font-size: 20px;
-            }
+        margin: 10px 10px;
+        display: inline-block;
+        color: #ffffff;
+        font-size: 20px;
+    }
 
     main {
-            position: relative;
-            top: 83px;
-            left: 0;
-            right: 0;
-            }
+        position: relative;
+        /* top: 52px; */
+        top: 80px;
+        left: 0;
+        right: 0;
+    }
 
     .side-left {
             position: fixed;
@@ -253,41 +318,45 @@ export default {
             }
 
     footer {
-            position: fixed;
-            z-index: 100;
-            }
+        position: fixed;
+        z-index: 100;
+    }
 
     a {
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 12px;
-            }
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+    }
 
     #menu-wrapper {
-            overflow-x: auto;  
-            justify-content: center;
-            position: fixed;
-            bottom: 0;
-            border-collapse: collapse;
-            height: 60px;
-            }
+        overflow-x: auto;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        border-collapse: collapse;
+        height: 60px;
+    }
 
-            table {
-                border-collapse: collapse;
-                width: 375px;
-                height: 60px;
-            }
 
-            th {
-                text-align: center;
-                background-color: #ffffff;
-                color: #fff;
-                text-transform: uppercase;
-                font-weight: bold;
-                padding: 0 15px;
-            }
+    btn btn-primary {
+        background-color: #3F81D7;
 
+    }
+    table {
+        border-collapse: collapse;
+        width: 375px;
+        height: 60px;
+    }
+
+    th {
+        text-align: center;
+        background-color: #ffffff;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 0 15px;
+    }
   
 
 </style>
