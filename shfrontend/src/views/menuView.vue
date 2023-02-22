@@ -1,7 +1,7 @@
 <template>
    <div class="page">
         <header>
-             <div class="sticky-top" style="padding-bottom:0px; background-color: #3F81D7; width: 375px; height: 82px;">
+             <div class="sticky-top" style="padding-bottom:0px; background-color: #3F81D7; width: 100%; height: 82px;">
                 <input type="text" placeholder="메뉴 · 종목 검색" style="border-radius: 5px; margin-left: 20px; margin-top: 10px;">
                 <!-- <font-awesome-icon icon="fa-solid fa-magnifying-glass-plus" /> -->
 
@@ -30,11 +30,12 @@
                     </div>
                 </div>
                 <div class="col-8 side-right">
-                    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                        <div style="background-color: #F7F8FA; padding: 15px; text-align:left;"><strong>국내주식</strong></div>
+                    <div style = "text-align:left;" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                        <div style="background-color: #F7F8FA; padding: 15px; "><strong>국내주식</strong></div>
                         <h6 id="list-item-1" style="padding-top: 15px; text-align:left;"><strong>종목찾기</strong></h6>
                         <hr>
-                        <p>실시간종목순위</p><p>신한인기종목</p><p>외국인/기관 순매수</p><p>테마(섹터)순위</p><p>신한리서치추천</p><p>신규리서치추천</p><p>신규상장종목</p><p>공매도/대차</p><p>시장조치</p><p>ETF/ETN</p>
+                        
+                        <p style = text-aglin: left>실시간종목순위</p><p>신한인기종목</p><p>외국인/기관 순매수</p><p>테마(섹터)순위</p><p>신한리서치추천</p><p>신규리서치추천</p><p>신규상장종목</p><p>공매도/대차</p><p>시장조치</p><p>ETF/ETN</p>
                         <h6 id="list-item-1" style="padding-top: 15px; text-align:left;"><strong>종목조건검색</strong></h6>
                         <hr>
                         <p>간편조건검색</p><p>조건검색</p><p>차트패턴검색</p>
@@ -228,6 +229,7 @@ export default {
 
     .topnavs {
                 text-align: center;
+             
             }
     .topnav {
             margin: 10px 10px;
@@ -238,7 +240,7 @@ export default {
 
     main {
             position: relative;
-            top: 83px;
+            top: 52px;
             left: 0;
             right: 0;
             }
@@ -271,6 +273,8 @@ export default {
             bottom: 0;
             border-collapse: collapse;
             height: 60px;
+            left: 0;
+            right: 0;
             }
 
             table {
