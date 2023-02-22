@@ -18,15 +18,29 @@
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">검색창</label>
-                                <textarea class="form-control" id="message-text"></textarea>
+                        <div>
+                            <div class="modal-header">
+                                <div class="mb-3">
+                                    <label for="title" class="col-form-label">검색창</label>
+                                    <textarea class="form-control" id="title" v-model="title"></textarea>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <!-- <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" @click="search">검색</button>
+                            </div> -->
+                            <div class="text-right">
+                                <button type="button" class="btn btn-primary" @click="search">검색</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">검색</button>
+
+                        <div>
+                            <div id="content">
+                                <p>{{ content }}</p>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" @click="AddWord(voca.title, voca.content)">단어장에 추가</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -43,7 +57,7 @@
                             단어뜻
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">단어장에 추가</button>
+                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" @click="AddWord(voca.title, voca.content)">단어장에 추가</button>
                         </div>
                     </div>
                 </div>
@@ -245,9 +259,69 @@
 
 
 <script>
-export default {
+import axios from 'axios';
 
+export default {
+    data() {
+        return {
+            title: '',
+            content: ''
+        }
+    },
+    created() {
+
+    },
+    methods: {
+        search() {
+            axios({
+                method: 'get',
+                url: `http://127.0.0.1:8000/dict?title=${this.title}`,
+                // headers: {
+                //     Authorization: 'JWT '
+                // },
+                // data: {
+                //     title: titleid,
+                //     content:contentid
+                // },
+            })
+            .then(response => {
+                this.content = response.data[0].content;
+                console.log(content)
+            })
+            .catch(error => {
+                console.error(error);
+            })
+        },
+        AddWord(titleid, contentid) {
+            const token = localStorage["token"];
+            if (!token) {
+                console.error('Token not found');
+                return;
+            }
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/note',
+                headers: {
+                    Authorization: 'JWT ' + token,
+                },
+                data: {
+                    title: titleid,
+                    content: contentid
+                },
+            })
+            .then(response => {
+                console.log(response.status);
+            })
+            .catch(error => {
+                console.error(error);
+                // loginpage로 이동
+            });
+        }
+    }
 }
+
+
+
 </script>
 
 <style scoped>
