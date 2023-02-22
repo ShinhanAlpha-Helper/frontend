@@ -6,7 +6,7 @@
                   <input type="text" placeholder="메뉴 · 종목 검색" style="border-radius: 5px; margin-left: 20px; margin-top: 10px;">
                   <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style="border:none; background-color: #3F81D7;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
                   <i class="fa-regular fa-bell"></i>
-                  <router-link to="/setting"><i class="fa-solid fa-gear" style="margin: 11px;"></i><router-link>
+                  <router-link to="/setting"><i class="fa-solid fa-gear" style="margin: 11px;"></i></router-link>
                   <div class="topnavs">
                       <div class="topnav">매매</div><div class="topnav">상품</div><div class="topnav">뱅킹/공모주</div><div class="topnav">고객센터</div>
                   </div>
