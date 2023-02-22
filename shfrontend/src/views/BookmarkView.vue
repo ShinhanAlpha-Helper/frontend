@@ -1,9 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left">
-                <router-link to="../VocaMainView.vue"></router-link>
-            </i>
+            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i>
             <h3>
             즐겨찾기 단어
             </h3>
