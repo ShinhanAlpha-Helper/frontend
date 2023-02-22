@@ -2,7 +2,7 @@
     <div class="page">
         <div class="wrap">
             <header>
-                <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click.prevent="this.$router.replace({path:'/vocamain'});"></i>
+                <router-link to="/vocamain"><i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i></router-link>
                 <h3>
                     단어 랭킹
                 </h3>
@@ -31,12 +31,12 @@
             <div id="menu-wrapper">
                 <table>
                     <tr>
-                        <th><a href="#">X</a></th>
-                        <th><a href="#" @click.prevent="this.$router.replace({path:'/'});">홈</a> </th>
+                        <th><a href="#"><router-link to="/">X</router-link></a></th>
+                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#" @click.prevent="this.$router.replace({path:'/login'});">로그인</a></th>
+                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
                 </table>
