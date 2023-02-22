@@ -7,12 +7,24 @@
                 <button class="menu" onclick=""></button>
             </div>
             <!-- 모달창 -->
-            <div class="black-bg" v-if="modalOpen === true">
-                <img class="modalOpen" src="../assets/main/modal.png">
-                <button class="modalVoca" style="cursor: pointer;" onclick="location.href=window.location.href+'vocamain'"></button>
-                <button v-on:click="modalOpen = false" class="modal-exit-btn1"></button>
-                <button v-on:click="modalOpen = false" class="modal-exit-btn2"></button>
-            </div>
+            <transition name="fade" v-if="flag === 'true'">
+              <div class="black-bg" v-if="modalOpen">
+                <div class="white-bg">
+                  <div class="context">
+                    <h5>단어 검색하고<br>나만의 단어장 만들자</h5>
+                    <p>모르는 단어를 검색해 보고 나만의 단어장에 저장해 공부할 수 있습니다.</p>
+                    <p>* 검색 서비스와 단어장 서비스는 <span>앱 설정에서 on/off</span>를 통해 제공됩니다.</p>
+                    <p>* <span>단어장 서비스는 로그인이 필요한 서비스</span>입니다.</p>
+                    <img src="../assets/main/book.png" class="book">
+                    <button class="toUse" style="cursor: pointer;" onclick="location.href=window.location.href+''">사용하러 가기</button>
+                  </div>  
+                  <div class="closeBtn">  
+                    <button @click="modalToday" class="modal-exit-btn1">오늘 보지 않기</button>
+                    <button @click="modalClose" class="modal-exit-btn2">닫기 </button>
+                  </div>  
+                </div>
+              </div>
+          </transition>
         </nav>
     </div>
 </template>
@@ -21,9 +33,37 @@
 export default {
   data() {
     return {
-      modalOpen: true
+      modalOpen: false,
+      flag: 'true',
     }
   },
+  methods: {
+    modal() {
+      this.modalOpen = !this.modalOpen
+    },
+    modalToday() {
+      localStorage.setItem("flag", false);
+      this.flag = 'false';
+    },
+    modalClose() {
+      this.flag = 'false'; // bool
+    },
+  },
+  mounted() {
+    this.modal()    
+  },
+  created() {
+    if (localStorage["flag"] === 'false') {
+      localStorage.setItem("flag", false);
+      this.flag = localStorage["flag"];     
+    } 
+
+    if (localStorage["flag"] == undefined) {
+      localStorage.setItem("flag", true);
+      this.flag = localStorage["flag"];
+    } 
+
+  }
 }
 </script>
 
@@ -48,13 +88,32 @@ nav {
   background-color: transparent;
   border-color: transparent;
 }
-.modalOpen {
-  width: 372px;
-  position: absolute;
-  margin-top: 355px;
-}
+
 img {
   position: relative;
+}
+.book {
+  bottom: 95px;
+  left: 200px;
+}
+
+
+.context {
+  text-align: left;
+  padding-left: 20px;
+  position: relative;
+  top: 30px;
+}
+
+p{
+  font-size: 10px;
+  margin-bottom: 0px;
+  position: relative;
+  top: 45px;
+  font-weight: bold;
+}
+span{
+  color: red;
 }
 
 .black-bg {
@@ -69,38 +128,51 @@ img {
 
 .white-bg {
   width: 375px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-/* button css */
-.modalVoca {
+  height: 240px;
+  background-color: rgba(242, 242, 253, 1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   position: relative;
-  width: 96px;
-  height: 25px;
-  top: 185px;
-  left: 19px;
-  background-color: transparent;
-  border-color: transparent;
+  top: 196px;
 }
-
+/* button css */
 .modal-exit-btn1 {
   position: relative;
-  top: 280px;
-  right: 85px;
-  width: 100px;
-  height: 30px;
-  background-color: transparent;
+  top: 10px;
+  right: 90px;
+  width: 120px;
+  height: 40px;
+  background-color: #ffffff;
   border-color: transparent;
+  font-size: 13px;
 }
 .modal-exit-btn2 {
   position: relative;
-  top: 280px;
-  left: 113px;
-  width: 52px;
+  top: 10px;
+  left: 85px;
+  width: 70px;
+  height: 40px;
+  background-color: #ffffff;
+  border-color: transparent;
+  font-size: 13px;
+}
+.closeBtn {
+  background-color: #ffffff;
+  width: 375px;
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+}
+.toUse {
+  position: relative;
+  bottom: 76px;
+  right: 122px;
   height: 30px;
-  background-color: transparent;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(54, 71, 242, 1);
   border-color: transparent;
 }
 
@@ -109,6 +181,10 @@ img {
 }
 .modal-exit-btn2:hover {
   cursor: pointer;
+}
+
+transition {
+  transition: 0.5s ease-in-out;
 }
 
 </style>
