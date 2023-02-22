@@ -9,7 +9,7 @@
             <!-- 모달창 -->
             <div class="black-bg" v-if="modalOpen === true">
                 <img class="modalOpen" src="../assets/main/modal.png">
-                <button class="modalVoca" style="cursor: pointer;" onclick="location.href=window.location.href+'vocamain'"></button>
+                <router-link to="/login"><button class="modalVoca" style="cursor: pointer;"></button></router-link>
                 <button v-on:click="modalOpen = false" class="modal-exit-btn1"></button>
                 <button v-on:click="modalOpen = false" class="modal-exit-btn2"></button>
             </div>

@@ -1,9 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left">
-                <router-link to="../VocaMainView.vue"></router-link>
-            </i>
+            <router-link to="/vocamain"><i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i></router-link>
             <h3>
             즐겨찾기 단어
             </h3>
@@ -11,17 +9,6 @@
         <nav>
             <main>
                 <div class="vocas">
-                    <!-- <div v-for="(note, i) in notes" :key="note.i">
-                        <div class="voca-item">
-                            <div class="left-text">
-                                <i class="far fa-star" :class="{ 'fas': note.bookmarked }" @click="toggleBookmark(note)"></i>
-                                <strong class="voca-text">{{ note.title }}
-                                    <br>
-                                    <div class="voca-mean">{{ note.content }}</div>
-                                </strong>
-                            </div>
-                        </div><hr>
-                    </div> -->
                     <div v-for="(bookmark, i) in bookmarks" :key="bookmark.i">
                         <div class="voca-item">
                             <div class="left-text">
@@ -40,12 +27,12 @@
             <div id="menu-wrapper">
                 <table>
                     <tr>
-                        <th><a href="#">X</a></th>
-                        <th><a href="#">홈</a> </th>
+                        <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
+                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#">로그인</a></th>
+                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
                 </table>
