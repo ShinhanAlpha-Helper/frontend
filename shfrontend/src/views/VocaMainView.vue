@@ -48,6 +48,9 @@ export default {
     margin-top: 30px;
     max-width: 375px;
 }
+.page header i {
+    margin-left: 20px;
+}
 .text {
     color: #FB0000;
     font-weight: bold;
