@@ -127,9 +127,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .page {
+    margin: 0 auto;
     margin-top: 30px;
+    max-width: 375px;
 }
 .page header i {
     margin-left: 20px;
@@ -173,6 +175,7 @@ h3 {
 }
 
 footer {
+    position: fixed;
     z-index: 100;
 }
 
@@ -194,7 +197,7 @@ a {
 
 table {
     border-collapse: collapse;
-    max-width: 375px;
+    width: 375px;
     height: 60px;
 }
 
