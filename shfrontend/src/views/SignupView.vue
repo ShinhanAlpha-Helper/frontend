@@ -1,28 +1,34 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-xmark fa-2x fa-pull-right" onclick=""></i>
-            <h3>
-                아이디 로그인
-            </h3>
-        </header>
-        <div class="loginpage">
-            <p class="main-text">아이디 로그인</p>
-            <p class="sub-text">아이디와 비밀번호를 입력해주세요.</p>
-            <br>
-            <div>
-                <input style="background-color: #E9F1FE;" type="text" v-model="username" placeholder="아이디"/>
-                <div class="underline"></div>
-                <input style="background-color: #E9F1FE;" type="password" v-model="password" placeholder="비밀번호"/>
-                <div class="underline"></div>
-            </div>
-            <div class="signup">
-                <router-link to="/signup">회원가입</router-link>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary" @:click="login()">로그인</button>
-            </div>
+                <i class="fa-solid fa-xmark fa-2x fa-pull-right" onclick=""></i>
+                <h3>
+                    회원가입
+                </h3>          
+            </header>
+            
+    <div class="signuppage">
+    <form>
+        <div>
+            <input style="background-color: #E9F1FE;" type="text" v-model="inputusername" placeholder="아이디"/>
+            <div class="underline"></div>
+            <input style="background-color: #E9F1FE;" type="password" v-model="inputpassword" placeholder="비밀번호"/>
+            <div class="underline"></div>
+            <input style="background-color: #E9F1FE;" type="password" v-model="pwconfirm" placeholder="비밀번호 확인"/>
+            <div class="underline"></div>
+            <input style="background-color: #E9F1FE;" type="email" v-model="email" placeholder="E-mail"/>
+            <div class="underline"></div> 
         </div>
+        
+    
+    
+        <br>
+        <div class="text-right">
+            <button type="button" class="btn btn-primary" @:click="signup()">회원가입</button>
+        </div>
+    </form>
+    
+    </div>
         <footer>
             <div id="menu-wrapper">
                 <table>
@@ -38,9 +44,9 @@
                 </table>
             </div>
         </footer>
+
     </div>
 </template>
-
 
 <script>
 import axios from 'axios';
@@ -48,50 +54,69 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            username: null,
-            password: null,
-        };
-    },
-    methods: {
-        login() {
-            console.log(this.username, this.password);
-            axios.post('http://127.0.0.1:8000/api/token', {
-                username: this.username,
-                password: this.password,
-            }).then(response => {
-                localStorage.setItem("token", response.data.access);
-                alert("로그인 성공");
-            }).catch(function () {  
-                alert("로그인 실패");
-            })
+            inputusername: '',
+            inputpassword: '',
+            pwconfirm: '',
+            email: '',
         }
     },
+    methods: {
+    	signup() {
+            console.log(this.inputusername, this.inputpassword, this.pwconfirm, this.email);
 
-};
+            axios.post('http://127.0.0.1:8000/member/register', {
+                username: this.inputusername,
+                password: this.inputpassword,
+                password2: this.pwconfirm,
+                email: this.email,
+            }).then(function () {
+                alert("회원가입 성공");
+            }).catch(function () {
+                alert("회원가입 실패");
+            })
+        }
+    }
+}
 </script>
 
+
+
 <style scoped>
-    .page {
-        margin: 0 auto;
-        margin-top: 30px;
-        max-width: 375px;
+    .background {
+        background-color: #E9F1FE;
+        height: 530px;
     }
+
     h3 {
+        /* text-align: left;
+        font-weight: bold;
+        font-size: px; */
         text-align: left;
         margin-left: 20px;
     }
     .page header i {
         margin-right: 20px;
     }
-    .loginpage {
+
+    .signuppage {
         padding: 90px 30px 0 30px;
         background-color: #E9F1FE;
         height: calc(100vh - 132px);
     }
-    .signup {
-        text-align: right;
-        margin: 10px 10px;
+
+    .underline {
+        height: 1px;
+        width: 230px;
+        background-color: black;
+        margin: 0px 0px 25px 45px;
     }
+    input {
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
     .btn {
         margin-top: 10px;
         /* position: absolute; */
@@ -118,19 +143,12 @@ export default {
         text-align: left;
         color: black;
     }
-    .underline {
-        height: 1px;
-        width: 230px;
-        background-color: black;
-        margin: 0px 0px 25px 45px;
-    }
-    input {
-        border: none;
-        outline: none;
-        font-size: 16px;
-        padding: 10px 0;
-    }
 
+    .page {
+        margin: 0 auto;
+        margin-top: 30px;
+        max-width: 375px;
+    }
 
     footer {
         z-index: 100;
@@ -165,5 +183,6 @@ export default {
         text-transform: uppercase;
         font-weight: bold;
         padding: 0 15px;
-    }
+    }         
+
 </style>

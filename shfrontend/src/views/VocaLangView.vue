@@ -9,8 +9,8 @@
         <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
             <!-- <ol class="breadcrumb">
                 <li class="breadcrumb" aria-current="page">단어/뜻</li>&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">단어만</li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">뜻만</a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active" aria-current="page">뜻만</li>
             </ol> -->
             <ol class="breadcrumb">
                 <li class="breadcrumb active"><a href="#">단어/뜻</a></li>&nbsp;&nbsp;
@@ -22,11 +22,11 @@
                     <div v-for="(note, i) in notes" :key="note.i">
                         <div>
                             <div class="contents">
-                                <strong>{{ note.title }}</strong>
+                                <strong>{{ note.content }}</strong>
                                 <br>
-                                <div class="meaning-box" @click="showMeaningBox(i)">
-                                    <div class="meaning-text">
-                                        {{ note.content }}
+                                <div class="answer-box" @click="showMeaningBox(i)">
+                                    <div class="answer-text">
+                                        {{ note.title }}
                                     </div>
                                     <div
                                     class="blind-box"
@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .page {
     margin: 0 auto;
     margin-top: 30px;
@@ -114,9 +114,9 @@ h3 {
     text-align: left;
 }
 .contents strong {
-    font-size: 15px;
+    font-size: 13px;
 }
-.meaning-box {
+.answer-box {
     margin-top: 5px;
     margin-bottom: 20px;
     position: relative;
@@ -133,13 +133,15 @@ h3 {
     height: 100%;
     border-radius: 10px;
 }
-.meaning-text {
+.answer-text {
     position: absolute;
-    font-size: 13px;
+    color: black;
+    font-size: 15px;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    margin: 10px 0px 0px 0px;
 }
 /* .meaning-text {
     position: absolute;
