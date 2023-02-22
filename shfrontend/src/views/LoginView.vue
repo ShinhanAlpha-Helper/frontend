@@ -17,7 +17,7 @@
                 <div class="underline"></div>
             </div>
             <div class="signup">
-                <a href="#">회원가입</a>
+                <router-link to="/signup">회원가입</router-link>
             </div>
             <div>
                 <button type="button" class="btn btn-primary" onclick="login()">로그인</button>
