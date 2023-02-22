@@ -16,7 +16,7 @@
                     <p>* 검색 서비스와 단어장 서비스는 <span>앱 설정에서 on/off</span>를 통해 제공됩니다.</p>
                     <p>* <span>단어장 서비스는 로그인이 필요한 서비스</span>입니다.</p>
                     <img src="../assets/main/book.png" class="book">
-                    <button class="toUse" style="cursor: pointer;" onclick="location.href=window.location.href+''">사용하러 가기</button>
+                    <router-link to="/login"><button class="toUse" style="cursor: pointer;">사용하러 가기</button></router-link>
                   </div>  
                   <div class="closeBtn">  
                     <button @click="modalToday" class="modal-exit-btn1">오늘 보지 않기</button>

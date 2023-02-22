@@ -1,21 +1,16 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" onclick=""></i>
+            <router-link to="/vocamain"><i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i></router-link>
             <h3>
             단어장
             </h3>
         </header>
         <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
-            <!-- <ol class="breadcrumb">
-                <li class="breadcrumb"><a href="#">단어/뜻</a></li>&nbsp;&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">단어만</li>&nbsp;&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">뜻만</li>
-            </ol> -->
             <ol class="breadcrumb">
-                <li class="breadcrumb active"><a href="#">단어/뜻</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">뜻만</a></li>
+                <li class="breadcrumb active"><a href="#"><router-link to="/vocaall">단어/뜻</router-link></a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active"><a href="#"><router-link to="/vocalang">단어만</router-link></a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active"><a href="#"><router-link to="/vocameaning">뜻만</router-link></a></li>
             </ol>
             <main>
                 <div class="vocas">
@@ -40,12 +35,12 @@
             <div id="menu-wrapper">
                 <table>
                     <tr>
-                        <th><a href="#">X</a></th>
-                        <th><a href="#">홈</a> </th>
+                        <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
+                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#">로그인</a></th>
+                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
                 </table>
@@ -57,6 +52,7 @@
 
 <script>
 import axios from 'axios';
+import $ from 'jquery'
 
 export default {
     data() {
@@ -157,7 +153,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .page {
     margin-top: 30px;
 }
@@ -190,6 +186,7 @@ h3 {
 .left-text {
     display: flex;
     align-items: center;
+    position: relative;
 }
 .voca-text {
     margin-left: 5px;
@@ -199,7 +196,10 @@ h3 {
 .voca-mean {
     font-size: 13px;
     color: #979797;
+    width: 100%;
+    height: 100%;
 }
+
 .voca-del {
     margin-left: auto;
     font-size: 11px;

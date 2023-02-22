@@ -1,32 +1,27 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" onclick=""></i>
+            <router-link to="/vocamain"><i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i></router-link>
             <h3>
             단어장
             </h3>
         </header>
         <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
-            <!-- <ol class="breadcrumb">
-                <li class="breadcrumb" aria-current="page">단어/뜻</li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">뜻만</li>
-            </ol> -->
             <ol class="breadcrumb">
-                <li class="breadcrumb active"><a href="#">단어/뜻</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">뜻만</a></li>
+                <li class="breadcrumb active"><a href="#"><router-link to="/vocaall">단어/뜻</router-link></a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active"><a href="#"><router-link to="/vocalang">단어만</router-link></a></li>&nbsp;&nbsp;
+                <li class="breadcrumb active"><a href="#"><router-link to="/vocameaning">뜻만</router-link></a></li>
             </ol>
             <main>
                 <div class="vocas">
                     <div v-for="(note, i) in notes" :key="note.i">
                         <div>
                             <div class="contents">
-                                <strong>{{ note.content }}</strong>
+                                <strong>{{ note.title }}</strong>
                                 <br>
                                 <div class="answer-box" @click="showMeaningBox(i)">
                                     <div class="answer-text">
-                                        {{ note.title }}
+                                        {{ note.content }}
                                     </div>
                                     <div
                                     class="blind-box"
@@ -43,15 +38,15 @@
             <div id="menu-wrapper">
                 <table>
                     <tr>
-                        <th><a href="#">X</a></th>
-                        <th><a href="#">홈</a> </th>
+                        <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
+                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#">로그인</a></th>
+                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
-                </table>
+            </table>
             </div>
         </footer>
     </div>
@@ -114,14 +109,13 @@ h3 {
     text-align: left;
 }
 .contents strong {
-    font-size: 13px;
+    font-size: 15px;
 }
 .answer-box {
     margin-top: 5px;
     margin-bottom: 20px;
     position: relative;
     width: 286px;
-    height: 36px;
     cursor: pointer;
 }
 .blind-box {
@@ -134,11 +128,8 @@ h3 {
     border-radius: 10px;
 }
 .answer-text {
-    position: absolute;
     color: black;
-    font-size: 15px;
-    top: 0;
-    left: 0;
+    font-size: 13px;
     width: 100%;
     height: 100%;
     margin: 10px 0px 0px 0px;
