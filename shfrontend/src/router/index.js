@@ -10,12 +10,25 @@ import SettingDetailView from '../views/SettingDetailView.vue'
 import VocaMeaningView from '../views/VocaMeaningView.vue'
 import SigninView from '../views/SigninView.vue'
 import VocaLangView from '../views/VocaLangView.vue'
-
+import modalView from '../views/modalView.vue'
+import menuView from '../views/menuView.vue'
 const routes = [
   {
     path: '/vocamain',
     name: 'vocamain',
     component: VocaMainView
+
+  },
+  {
+    path: '/menu',
+    name: 'menu',
+    component: menuView
+
+  },
+  {
+    path: '/modal',
+    name: 'modal',
+    component: modalView
 
   },
   {
