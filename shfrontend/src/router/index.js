@@ -8,10 +8,14 @@ import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
 import SettingDetailView from '../views/SettingDetailView.vue'
 import VocaMeaningView from '../views/VocaMeaningView.vue'
-import SigninView from '../views/SigninView.vue'
+import SignupView from '../views/SignupView.vue'
 import VocaLangView from '../views/VocaLangView.vue'
+
 import modalView from '../views/modalView.vue'
 import menuView from '../views/menuView.vue'
+
+import BookmarkView from '../views/BookmarkView.vue'
+
 const routes = [
   {
     path: '/vocamain',
@@ -20,6 +24,7 @@ const routes = [
 
   },
   {
+
     path: '/menu',
     name: 'menu',
     component: menuView
@@ -32,15 +37,16 @@ const routes = [
 
   },
   {
-    path: '/signin',
-    name: 'signin',
-    component: SigninView
+    
+    path: '/signup',
+    name: 'signup',
+    component: SignupView
 
   },
 
   {
-    path: '/dailyrankview',
-    name: 'dailyrankview',
+    path: '/dailyrank',
+    name: 'dailyrank',
     component: DailyRankView
 
   },
@@ -51,9 +57,9 @@ const routes = [
     component: VocaAllView
   },
   {
-    path: '/loginerror',
-    name: 'loginerror',
-    component: LoginErrorView
+    path: '/bookmark',
+    name: 'bookmark',
+    component: BookmarkView
   },
   {
     path: '/vocameaning',
@@ -64,6 +70,12 @@ const routes = [
     path: '/vocalang',
     name: 'vocalang',
     component: VocaLangView
+  },
+
+  {
+    path: '/loginerror',
+    name: 'loginerror',
+    component: LoginErrorView
   },
   {
     path: '/login',

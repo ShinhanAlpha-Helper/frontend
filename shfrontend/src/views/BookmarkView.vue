@@ -1,25 +1,17 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" onclick=""></i>
+            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left">
+                <router-link to="../VocaMainView.vue"></router-link>
+            </i>
             <h3>
-            단어장
+            즐겨찾기 단어
             </h3>
         </header>
-        <nav style="--bs-breadcrumb-divider:'';" aria-label="breadcrumb">
-            <!-- <ol class="breadcrumb">
-                <li class="breadcrumb"><a href="#">단어/뜻</a></li>&nbsp;&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">단어만</li>&nbsp;&nbsp;&nbsp;
-                <li class="breadcrumb active" aria-current="page">뜻만</li>
-            </ol> -->
-            <ol class="breadcrumb">
-                <li class="breadcrumb active"><a href="#">단어/뜻</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">단어만</a></li>&nbsp;&nbsp;
-                <li class="breadcrumb active"><a href="#">뜻만</a></li>
-            </ol>
+        <nav>
             <main>
                 <div class="vocas">
-                    <div v-for="(note, i) in notes" :key="note.i">
+                    <!-- <div v-for="(note, i) in notes" :key="note.i">
                         <div class="voca-item">
                             <div class="left-text">
                                 <i class="far fa-star" :class="{ 'fas': note.bookmarked }" @click="toggleBookmark(note)"></i>
@@ -28,9 +20,17 @@
                                     <div class="voca-mean">{{ note.content }}</div>
                                 </strong>
                             </div>
-                            <b class="voca-del">
-                                <a href="" @click.prevent="delItem(i)">삭제</a>
-                            </b>
+                        </div><hr>
+                    </div> -->
+                    <div v-for="(bookmark, i) in bookmarks" :key="bookmark.i">
+                        <div class="voca-item">
+                            <div class="left-text">
+                                <i class="far fa-star" :class="{ 'fas': bookmark.bookmarked }" @click="toggleBookmark(bookmark)"></i>
+                                <strong class="voca-text">{{ bookmark.title }}
+                                    <br>
+                                    <div class="voca-mean">{{ bookmark.content }}</div>
+                                </strong>
+                            </div>
                         </div><hr>
                     </div>
                 </div>
@@ -95,23 +95,6 @@ export default {
                 this.bookmarks.splice(index, 1);
             }
         },
-        delItem(index) {
-            axios({
-                method: 'delete',
-                url: 'http://127.0.0.1:8000/note',
-                headers: {
-                    Authorization: 'JWT ' + localStorage.token,
-                },
-                data: {
-                    id: noteid,
-                },
-                }).then(response => {
-                    alert('단어가 삭제되었습니다.');
-                    location.reload();
-                }).catch(error => {
-                    console.error(error);
-                });
-        }
     },
     mounted() {
         const savedBookmarks = localStorage.getItem('bookmarks');
@@ -160,9 +143,6 @@ export default {
 <style>
 .page {
     margin-top: 30px;
-}
-.breadcrumb {
-    font-size: 11px;
 }
 .page header i {
     margin-left: 20px;
