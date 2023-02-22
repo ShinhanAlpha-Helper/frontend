@@ -25,7 +25,7 @@
                                     </div>
                                     <div
                                     class="blind-box"
-                                    :style="{ display: note.showMeaning ? 'block':'none' }"
+                                    :style="{ display: note.showMeaning ? 'none' : 'block' }"
                                     ></div>
                                 </div>
                             </div>

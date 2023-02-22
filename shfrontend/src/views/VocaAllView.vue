@@ -16,15 +16,15 @@
                 <div class="vocas">
                     <div v-for="(note, i) in notes" :key="note.i">
                         <div class="voca-item">
-                            <div class="left-text">
-                                <i class="far fa-star" :class="{ 'fas': note.bookmarked }" @click="toggleBookmark(note)"></i>
+                            <div class="left-text"> <!-- 'fas': 1 색깔, 0이면 없어짐 -->
+                                <i class="far fa-star" style="color: grey;" @click="toggleBookmark($event, note.id)"></i>
                                 <strong class="voca-text">{{ note.title }}
                                     <br>
                                     <div class="voca-mean">{{ note.content }}</div>
                                 </strong>
                             </div>
                             <b class="voca-del">
-                                <a href="" @click.prevent="delItem(i)">삭제</a>
+                                <a href="" @click.prevent="delItem(note.id)">삭제</a>
                             </b>
                         </div><hr>
                     </div>
@@ -58,7 +58,6 @@ export default {
     data() {
         return{
             notes: [],
-            bookmarks: []
         }
     },
     created() {
@@ -76,22 +75,44 @@ export default {
         })
         .then(response => {
             this.notes = response.data.results;
+            for (let i = 0; i < this.notes.length; i++)
+                this.bookmarks[i] = 0;
         })
         .catch(error => {
             console.error(error);
         });
     },
     methods: {
-        toggleBookmark(note) {
-            note.bookmarked = !note.bookmarked;
-            if (note.bookmarked) {
-                this.bookmarks.push(note);
-            } else {
-                const index = this.bookmarks.indexOf(note);
-                this.bookmarks.splice(index, 1);
+        toggleBookmark(event, noteid) {
+            if (event.currentTarget.style.color == 'grey')
+                event.currentTarget.style.color = 'yellow';
+            else
+                event.currentTarget.style.color = 'grey'
+
+            console.log(event.currentTarget.classList);
+            const token = localStorage["token"];
+            if (!token) {
+                console.error('Token not found');
+                return;
             }
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/note/bookmark',
+                headers: {
+                    Authorization: 'JWT ' + token,
+                },
+                data: {
+                    note: noteid,
+                },
+            })
+            .then(response => {
+                console.log(response.status);
+            })
+            .catch(error => {
+                console.error(error);
+            });
         },
-        delItem(index) {
+        delItem(noteid) {
             axios({
                 method: 'delete',
                 url: 'http://127.0.0.1:8000/note',
@@ -107,49 +128,8 @@ export default {
                 }).catch(error => {
                     console.error(error);
                 });
-        }
+        },
     },
-    mounted() {
-        const savedBookmarks = localStorage.getItem('bookmarks');
-        if (savedBookmarks) {
-            this.bookmarks = JSON.parse(savedBookmarks);
-            this.bookmarks.forEach(bookmark => {
-            const note = this.notes.find(n => n.id === bookmark.id);
-            if (note) {
-                note.bookmarked = true;
-            }
-            });
-        }
-    },
-    watch: {
-        bookmarks: {
-            handler: function(bookmarks) {
-            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-            },
-            deep: true
-        }
-    }
-    // mounted() {
-    //     const savedBookmarks = localStorage.getItem('bookmarks');
-    //     if (savedBookmarks) {
-    //         this.bookmarks = JSON.parse(savedBookmarks);
-    //         this.bookmarks.forEach(bookmark => {
-    //         const voca = this.vocas.find(v => v.id === bookmark.id);
-    //         if (voca) {
-    //             voca.bookmarked = true;
-    //         }
-    //         });
-    //     }
-    // },
-    // watch: {
-    //     bookmarks: {
-    //         handler: function(bookmarks) {
-    //         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-    //         },
-    //         deep: true
-    //     }
-    // }
-
 }
 </script>
 
@@ -208,6 +188,7 @@ h3 {
 }
 
 footer {
+    position: fixed;
     z-index: 100;
 }
 
@@ -229,7 +210,7 @@ a {
 
 table {
     border-collapse: collapse;
-    max-width: 375px;
+    width: 375px;
     height: 60px;
 }
 
