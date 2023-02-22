@@ -10,6 +10,7 @@ import SettingDetailView from '../views/SettingDetailView.vue'
 import VocaMeaningView from '../views/VocaMeaningView.vue'
 import SignupView from '../views/SignupView.vue'
 import VocaLangView from '../views/VocaLangView.vue'
+import BookmarkView from '../views/BookmarkView.vue'
 
 const routes = [
   {
@@ -26,8 +27,8 @@ const routes = [
   },
 
   {
-    path: '/dailyrankview',
-    name: 'dailyrankview',
+    path: '/dailyrank',
+    name: 'dailyrank',
     component: DailyRankView
 
   },
@@ -38,9 +39,9 @@ const routes = [
     component: VocaAllView
   },
   {
-    path: '/loginerror',
-    name: 'loginerror',
-    component: LoginErrorView
+    path: '/bookmark',
+    name: 'bookmark',
+    component: BookmarkView
   },
   {
     path: '/vocameaning',
@@ -51,6 +52,12 @@ const routes = [
     path: '/vocalang',
     name: 'vocalang',
     component: VocaLangView
+  },
+
+  {
+    path: '/loginerror',
+    name: 'loginerror',
+    component: LoginErrorView
   },
   {
     path: '/login',
