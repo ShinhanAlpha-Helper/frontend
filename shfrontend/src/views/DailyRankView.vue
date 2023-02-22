@@ -3,9 +3,9 @@
         <div class="wrap">
             <header>
                 <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click.prevent="this.$router.replace({path:'/vocamain'});"></i>
-                <h2>
+                <h3>
                     단어 랭킹
-                </h2>
+                </h3>
             </header>
             <br>
             <img alt="Vue logo" src="../assets/rankingimg.png">
@@ -32,11 +32,11 @@
                 <table>
                     <tr>
                         <th><a href="#">X</a></th>
-                        <th><a href="#">홈</a> </th>
+                        <th><a href="#" @click.prevent="this.$router.replace({path:'/'});">홈</a> </th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#">로그인</a></th>
+                        <th><a href="#" @click.prevent="this.$router.replace({path:'/login'});">로그인</a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
                 </table>
@@ -54,6 +54,15 @@ export default {
 </script>
 
 <style scoped>
+.page {
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 375px;
+}
+
+h3 {
+    margin-right:50px;
+}
 
 .box{
     text-align:center;
@@ -95,14 +104,17 @@ export default {
     background-color: white;
 }
 footer {
+    position: fixed;
     z-index: 100;
 }
+
 a {
     color: black;
     text-decoration: none;
     font-weight: bold;
     font-size: 12px;
 }
+
 #menu-wrapper {
     overflow-x: auto;
     justify-content: center;
@@ -111,11 +123,13 @@ a {
     border-collapse: collapse;
     height: 60px;
 }
+
 table {
     border-collapse: collapse;
-    max-width: 375px;
+    width: 375px;
     height: 60px;
 }
+
 th {
     text-align: center;
     background-color: #ffffff;
@@ -123,11 +137,5 @@ th {
     text-transform: uppercase;
     font-weight: bold;
     padding: 0 15px;
-}
-
-.nav.nav-tabs {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
 }
 </style>

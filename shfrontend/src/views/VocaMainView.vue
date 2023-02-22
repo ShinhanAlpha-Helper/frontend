@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-arrow-left fa-2x fa-pull-left" @click.prevent="this.$router.replace({path:'/'});"></i>
+            <router-link to="/menu"><i class="fa-solid fa-arrow-left fa-2x fa-pull-left"></i></router-link>
             <h3>
             나만의 단어장
             </h3>
@@ -9,31 +9,32 @@
         <br>
         <img alt="Vue logo" src="../assets/mainimg.png">
         <br>
-        <button class="btn" @click.prevent="this.$router.replace({path:'/vocaall'});">
-            <p :style="{ color : 'white' }">모든 단어 보기</p>
+        <button class="btn">
+            <router-link to="/vocaall"><p :style="{ color : 'white' }">모든 단어 보기</p></router-link>
         </button>
-        <button class="btn" @click.prevent="this.$router.replace({path:'/bookmark'});">
-            <p :style="{ color : 'white' }">즐겨찾기 단어 보기</p>
+        <button class="btn">
+            <router-link to="/bookmark"><p :style="{ color : 'white' }">즐겨찾기 단어 보기</p></router-link>
         </button>
-        <button class="btn" @click.prevent="this.$router.replace({path:'/dailyrank'});">
-            <p :style="{ color : 'white' }"> 단어 랭킹 보기</p>
+        <button class="btn">
+            <router-link to="/dailyrank"><p :style="{ color : 'white' }"> 단어 랭킹 보기</p></router-link>
         </button>
+
+        <footer>
+            <div id="menu-wrapper">
+                <table>
+                    <tr>
+                        <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
+                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
+                        <th><a href="#">계좌<br>개설</a></th>
+                        <th><a href="#">인증<br>센터</a></th>
+                        <th><a href="#">챗봇</a></th>
+                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
+                        <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
+                    </tr>
+                </table>
+            </div>
+        </footer>
     </div>
-    <footer>
-        <div id="menu-wrapper">
-            <table>
-                <tr>
-                    <th><a href="#">X</a></th>
-                    <th><a href="#">홈</a> </th>
-                    <th><a href="#">계좌<br>개설</a></th>
-                    <th><a href="#">인증<br>센터</a></th>
-                    <th><a href="#">챗봇</a></th>
-                    <th><a href="#">로그인</a></th>
-                    <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
-                </tr>
-            </table>
-        </div>
-    </footer>
 </template>
 
 <script>
@@ -73,10 +74,11 @@ export default {
 }
 
 h3 {
-    margin-right:30px;
+    margin-right:50px;
 }
 
 footer {
+    position: fixed;
     z-index: 100;
 }
 
@@ -98,7 +100,7 @@ a {
 
 table {
     border-collapse: collapse;
-    max-width: 375px;
+    width: 375px;
     height: 60px;
 }
 

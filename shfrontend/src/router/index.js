@@ -6,18 +6,42 @@ import VocaMainView from '../views/VocaMainView.vue'
 import SettingView from '../views/SettingView.vue'
 import DailyRankView from '../views/DailyRankView.vue'
 import VocaAllView from '../views/VocaAllView.vue'
+import SplashView from '../views/SplashView'
 import SettingDetailView from '../views/SettingDetailView.vue'
 import VocaMeaningView from '../views/VocaMeaningView.vue'
 import SigninView from '../views/SignupView.vue'
 import VocaLangView from '../views/VocaLangView.vue'
+
+import modalView from '../views/modalView.vue'
+import menuView from '../views/menuView.vue'
+
 import BookmarkView from '../views/BookmarkView.vue'
 
+import NewsView from '../views/NewsView.vue'
+// import NewsDetailView from '../views/NewsDetailView.vue'
+
+
 const routes = [
+  {
+    path: '/vocamain',
+    name: 'vocamain',
+    component: VocaMainView
+  },
+  {
+    path: '/menu',
+    name: 'menu',
+    component: menuView
+  },
+  {
+    path: '/modal',
+    name: 'modal',
+    component: modalView
+
+  },
   {
     path: '/signup',
     name: 'signup',
     component: SigninView
-
   },
 
   {
@@ -65,6 +89,11 @@ const routes = [
     component: LoginView
   },
   {
+    path: '/splash',
+    name: 'splash',
+    component: SplashView
+  },
+  {
     path: '/',
     name: 'home',
     component: HomeView
@@ -86,7 +115,17 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: NewsView
+  },
+  // {
+  //   path: '/newsdetail',
+  //   name: 'newsdetail',
+  //   component: NewsDetailView
+  // },
 ]
 
 const router = createRouter({

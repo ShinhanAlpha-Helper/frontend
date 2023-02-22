@@ -9,9 +9,9 @@
             <!-- 모달창 -->
             <div class="black-bg" v-if="modalOpen === true">
                 <img class="modalOpen" src="../assets/main/modal.png">
-                <button class="modalVoca" style="cursor: pointer;" onclick="location.href=window.location.href+'vocamain'">단어</button>
-                <button v-on:click="modalOpen = false" class="modal-exit-btn">닫기</button>
-                <button v-on:click="modalOpen = false" class="modal-exit-btn">닫기</button>
+                <router-link to="/login"><button class="modalVoca" style="cursor: pointer;"></button></router-link>
+                <button v-on:click="modalOpen = false" class="modal-exit-btn1"></button>
+                <button v-on:click="modalOpen = false" class="modal-exit-btn2"></button>
             </div>
         </nav>
     </div>
@@ -74,12 +74,40 @@ img {
   border-radius: 8px;
 }
 
-.modal-exit-btn {
+/* button css */
+.modalVoca {
   position: relative;
-  float: right;
+  width: 96px;
+  height: 25px;
+  top: 185px;
+  left: 19px;
+  background-color: transparent;
+  border-color: transparent;
 }
 
-.modal-exit-btn:hover {
+.modal-exit-btn1 {
+  position: relative;
+  top: 280px;
+  right: 85px;
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  border-color: transparent;
+}
+.modal-exit-btn2 {
+  position: relative;
+  top: 280px;
+  left: 113px;
+  width: 52px;
+  height: 30px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.modal-exit-btn1:hover {
+  cursor: pointer;
+}
+.modal-exit-btn2:hover {
   cursor: pointer;
 }
 
