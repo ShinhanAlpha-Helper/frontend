@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <h5>편의 기능<i class="fa-solid fa-x"></i></h5>
+            <h5>편의 기능<router-link to="/setting"><i class="fa-solid fa-x"></i></router-link></h5>
             <hr>
         </header>
         <nav>
@@ -165,6 +165,7 @@ p {
     position: relative;
     margin-right: 10px;
     top: 0px;
+    color: rgba(46, 64, 81, 1);
 }
 .fa-chevron-right {
     color: grey;

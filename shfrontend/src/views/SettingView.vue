@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <i class="fa-solid fa-chevron-left fa-xl fa-pull-left"></i>
+            <router-link to="/menu"><i class="fa-solid fa-chevron-left fa-xl fa-pull-left"></i></router-link>
             <h5>앱 설정<i class="fa-solid fa-circle-chevron-down"></i></h5>
         </header>
         <nav>
@@ -139,6 +139,7 @@ p {
 
 .fa-chevron-left {
     margin-top: 10px;
+    color: rgba(46, 64, 81, 1);
 }
 
 .fa-chevron-right {

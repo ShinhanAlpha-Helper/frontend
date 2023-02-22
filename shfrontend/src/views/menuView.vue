@@ -14,7 +14,7 @@
                 <!-- <button class="btn"><i class="fa-solid fa-magnifying-glass-plus fa-sm"></i></button> -->
                 <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style="border:none; background-color: #3F81D7;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
                 <i class="fa-regular fa-bell"></i>
-                <i class="fa-solid fa-gear"></i>
+                <router-link to="/setting"><i class="fa-solid fa-gear"></i></router-link>
                 <div class="topnavs">
                     <div class="topnav">매매</div><div class="topnav">상품</div><div class="topnav">뱅킹/공모주</div><div class="topnav">고객센터</div>
                 </div>
@@ -219,7 +219,7 @@
                         <div style="background-color: #F7F8FA; padding: 15px; text-align:left;"><strong>투자플러스</strong></div>
                         <h6 id="list-item-7" style="padding-top: 15px; text-align:left;"><strong>투자플러스 서비스</strong></h6>
                         <hr>    
-                        <p>투자플러스</p><p id="note" style="display: none; text-align:left;">단어장</p>
+                        <p>투자플러스</p><p id="note" style="display: none; text-align:left;">나만의 단어장</p>
                         <h6 id="list-item-7" style="padding-top: 15px; text-align:left;"><strong>이슈</strong></h6>
                         <hr>    
                         <p>이슈진단</p><p>종목이슈체크</p>
