@@ -11,6 +11,10 @@ import SettingDetailView from '../views/SettingDetailView.vue'
 import VocaMeaningView from '../views/VocaMeaningView.vue'
 import SignupView from '../views/SignupView.vue'
 import VocaLangView from '../views/VocaLangView.vue'
+
+import modalView from '../views/modalView.vue'
+import menuView from '../views/menuView.vue'
+
 import BookmarkView from '../views/BookmarkView.vue'
 
 const routes = [
@@ -21,6 +25,20 @@ const routes = [
 
   },
   {
+
+    path: '/menu',
+    name: 'menu',
+    component: menuView
+
+  },
+  {
+    path: '/modal',
+    name: 'modal',
+    component: modalView
+
+  },
+  {
+    
     path: '/signup',
     name: 'signup',
     component: SignupView
