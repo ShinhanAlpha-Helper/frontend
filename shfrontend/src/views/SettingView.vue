@@ -124,7 +124,6 @@ div.contents {
     width: 300px;
     position: relative;
 }
-
 span {
     font-weight: bold;
     font-size: 15px;

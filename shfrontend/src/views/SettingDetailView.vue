@@ -27,18 +27,6 @@
                         <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                     </div>
                 </div>
-                <div class="list" v-else>
-                    <div class="contents">
-                        <span>{{ item.title }}</span>
-                        <br>
-                        <p>{{ item.content }}</p>
-                    </div>
-                    <hr>    
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                    </div>
-                </div>
             </li>
         </nav>
     </div>
@@ -75,12 +63,12 @@ export default {
                     content: '위젯에 보여지는 지수/종목정보 항목을 설정할 수 있습니다.',
                 },
                 {
-                    option: 3,
+                    option: 2,
                     title: '단어검색 기능 설정',
                     content: '단어 검색 기능을 실행 합니다.',
                 },
                 {
-                    option: 3,
+                    option: 2,
                     title: '단어장 기능 설정',
                     content: '단어장 기능을 실행 합니다.',
                 },
