@@ -100,7 +100,7 @@ export default {
             }).catch(() => {
                 this.showModalfail = true;
                 this.failModal = true;
-            })
+            });
         }
     }
 }
