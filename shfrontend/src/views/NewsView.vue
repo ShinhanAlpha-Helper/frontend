@@ -45,7 +45,19 @@
 
         <main>
             <div class="div" style="overflow-y: scroll; height:490px;">
-                <ul ref="news" style="list-style: none;">
+                <ul ref="news" style="list-style: none;" v-for="(item, i) in newspage.reverse()" :key="i">
+                    <li v-if="item.img != ''">
+                        <span style="font-size: 8px;">{{ item.date }}    {{ item.date }}</span><br>
+                        <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @:click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
+                        <img :src="item.img" style="width: 70px; height: 40px;">
+                    </li>
+
+                    <li v-else>
+                        <span style="font-size: 8px;">{{ item.date }}    {{ item.date }}</span><br>
+                        <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @:click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
+                        <img :src="defaultimage" style="width: 70px; height: 40px;">
+                    </li>
+                    <hr>
                 </ul>
             </div>
         </main>
@@ -76,6 +88,8 @@ export default {
     data() {
         return {
             defaultimage: 'https://imgnews.pstatic.net/image/thumb70/648/2023/02/22/14076.jpg',
+            newspage: [],
+            clickurl: '',
         }
     },
     created() {
@@ -86,29 +100,7 @@ export default {
         })
         .then(response => {
             console.log(response.data.results);
-            this.$refs.news.innerHTML = "";
-
-            for (let i = response.data.results.length - 1; i >= 0; i--) {
-                const news = response.data.results[i];
-
-                if (news.img != '') {
-                    this.$refs.news.insertAdjacentHTML("beforeEnd",
-                        (`<li><span style="font-size: 8px;">${news.date}    ${news.press}</span><br>
-                            <a href="${news.url}" style="text-decoration: none; font-size: 12px; color: black;"><strong>${news.title}</strong></a>
-                            <img src="${news.img}" style="width: 70px; height: 40px;">
-                            </li><hr>`)                        
-                    )
-                }
-                else {
-                    this.$refs.news.insertAdjacentHTML("beforeEnd",
-                        (`<li><span style="font-size: 8px;">${news.date}    ${news.press}</span><br>
-                            <a href="${news.url}" style="text-decoration: none; font-size: 12px; color: black;"><strong>${news.title}</strong></a>
-                            <img src="${this.defaultimage}" style="width: 70px; height: 40px;">
-                            </li><hr>`)
-                    )                                
-                }
-            }
-
+            this.newspage = response.data.results;
         });
     },
     methods: {
@@ -120,29 +112,7 @@ export default {
             })
             .then(response => {
                 console.log(response.data.results);
-                this.$refs.news.innerHTML = "";
-
-                for (let i = response.data.results.length - 1; i >= 0; i--) {
-                    const news = response.data.results[i];
-
-                    if (news.img != '') {
-                        this.$refs.news.insertAdjacentHTML("beforeEnd",
-                            (`<li><span style="font-size: 8px;">${news.date}    ${news.press}</span><br>
-                                <a href="${news.url}" style="text-decoration: none; font-size: 12px; color: black;"><strong>${news.title}</strong></a>
-                                <img src="${news.img}" style="width: 70px; height: 40px;">
-                                </li><hr>`)                        
-                        )
-                    }
-                    else {
-                        this.$refs.news.insertAdjacentHTML("beforeEnd",
-                            (`<li><span style="font-size: 8px;">${news.date}    ${news.press}</span><br>
-                                <a href="${news.url}" style="text-decoration: none; font-size: 12px; color: black;"><strong>${news.title}</strong></a>
-                                <img src="${this.defaultimage}" style="width: 70px; height: 40px;">
-                                </li><hr>`)
-                        )                                
-                    }
-                }
-
+                this.newspage = response.data.results;
             });
         },
         overseasnews() {
@@ -153,31 +123,10 @@ export default {
             })
             .then(response => {
                 console.log(response.data.results);
-                this.$refs.news.innerHTML = "";
-
-                for (let i = response.data.results.length - 1; i >= 0; i--) {
-                    const news = response.data.results[i];
-
-                    if (news.img != '') {
-                        this.$refs.news.insertAdjacentHTML("beforeEnd",
-                            (`<li><span style="font-size: 8px;">${news.date}    ${news.press}</span><br>
-                                <a href="${news.url}" style="text-decoration: none; font-size: 12px; color: black;"><strong>${news.title}</strong></a>
-                                <img src="${news.img}" style="width: 70px; height: 40px;">
-                                </li><hr>`)                        
-                        )
-                    }
-                    else {
-                        this.$refs.news.insertAdjacentHTML("beforeEnd",
-                            (`<li><span style="font-size: 8px;">${news.date}    ${news.press}</span><br>
-                                <a href="${news.url}" style="text-decoration: none; font-size: 12px; color: black;"><strong>${news.title}</strong></a>
-                                <img src="${this.defaultimage}" style="width: 70px; height: 40px;">
-                                </li><hr>`)
-                        )                                
-                    }
-                }
-
+                this.newspage = response.data.results;
             });
         },
+
         newsreload() {
             // axios.post('http://127.0.0.1:8000/news/domestic')
             axios.post('http://34.64.189.50/api/news/domestic')
@@ -190,7 +139,13 @@ export default {
             .then(response => {
                 console.log(response.status);
             });
-        }
+        },
+        
+        gopage(url) {
+            console.log(url);
+            this.clickurl = url;
+            this.$router.push({name: 'newsdetail', query: {url : this.clickurl}})
+        },
     }
 }
 </script>
@@ -267,7 +222,3 @@ export default {
         padding: 0 15px;
     }
 </style>
-
-<!-- <img alt="Vue logo" src="../assets/medal1.png">예수금<hr>
-<img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
-<img alt="Vue logo" src="../assets/medal3.png">공매도<hr> -->
