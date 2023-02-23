@@ -63,7 +63,8 @@ export default {
     	signup() {
             console.log(this.inputusername, this.inputpassword, this.pwconfirm, this.email);
 
-            axios.post('http://127.0.0.1:8000/member/register', {
+            // axios.post('http://127.0.0.1:8000/member/register', {
+            axios.post('http://127.0.0.1:8000/api/member/register', {
                 username: this.inputusername,
                 password: this.inputpassword,
                 password2: this.pwconfirm,
