@@ -12,13 +12,13 @@
                     <i class="fa-solid fa-magnifying-glass-plus" style="margin-right: 10px;"></i> <!--검색 기능 아이콘-->
                     <i class="fa-regular fa-bell" style="margin-right: 10px;"></i> <!--종 모양 아이콘-->
                     <button style="border: 1px solid black; border-radius: 5px; margin-right: 10px;">가</button>
-                    <button style="border: 0; background-color: #fff; margin-right: 10px;" @click="newsreload()"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button style="border: 0; background-color: #fff; margin-right: 10px;" @click="newsreload"><i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             </div>
 
             <div id="flexaround" style="padding-top: 20px;">
-                <div><a href="#" class="header_a" @click="domesticnews()">국내</a></div>
-                <div><a href="#" class="header_a" @click="overseasnews()">해외</a></div>
+                <div><a href="#" class="header_a" @click="domesticnews">국내</a></div>
+                <div><a href="#" class="header_a" @click="overseasnews">해외</a></div>
                 <div><a href="#" class="header_a">MY종목</a></div>
             </div>
             <div style="border-top: 1px solid black; margin: 16px 0;"></div>
@@ -93,11 +93,7 @@ export default {
         }
     },
     created() {
-        axios({
-            method: 'get',
-            // url: 'http://127.0.0.1:8000/news/domestic',
-            url: 'http://34.64.189.50/api/news/domestic',
-        })
+        axios.get('http://34.64.189.50/api/news/domestic')
         .then(response => {
             console.log(response.data.results);
             this.newspage = response.data.results;
@@ -105,22 +101,14 @@ export default {
     },
     methods: {
         domesticnews() {
-            axios({
-                method: 'get',
-                // url: 'http://127.0.0.1:8000/news/domestic',
-                url: 'http://34.64.189.50/api/news/domestic',
-            })
+            axios.get('http://34.64.189.50/api/news/domestic')
             .then(response => {
                 console.log(response.data.results);
                 this.newspage = response.data.results;
             });
         },
         overseasnews() {
-            axios({
-                method: 'get',
-                // url: 'http://127.0.0.1:8000/news/overseas',
-                url: 'http://34.64.189.50/api/news/overseas',
-            })
+            axios.get('http://34.64.189.50/api/news/overseas')
             .then(response => {
                 console.log(response.data.results);
                 this.newspage = response.data.results;
