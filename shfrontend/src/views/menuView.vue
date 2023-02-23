@@ -37,48 +37,27 @@
                         <div>
                             <div id="content">
                                 <p>{{ content }}</p>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" @click="AddWord(voca.title, voca.content)">단어장에 추가</button>
+                                <div id="questionAdd" class="modal-footer" v-if="content">
+                                    <button class="btn btn-primary" @click="AddWord(title, content)">단어장에 추가</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
+            <b-modal id="modal-1" title="BootstrapVue" v-model="confirmModal">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">단어</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">'{{title}}'가<br> 단어장에 추가되었습니다.</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            단어뜻
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" @click="AddWord(voca.title, voca.content)">단어장에 추가</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">단어장에추가</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            단어장에 추가되었습니다.
                         </div>
                         <div class="modal-footer">
                             <router-link to="/vocamain"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">단어장으로 가기</button></router-link>
                         </div>
                     </div>
-                </div>
-            </div>
+            </b-modal>
+
+
             <div class="row">
                 <div class="col-4 side-left">
                     <div>
@@ -265,13 +244,16 @@ export default {
     data() {
         return {
             title: '',
-            content: ''
+            content: '',
+            confirmModal: false,
         }
     },
     created() {
 
     },
+
     methods: {
+        // 단어 검색
         search() {
             axios({
                 method: 'get',
@@ -292,7 +274,8 @@ export default {
                 console.error(error);
             })
         },
-        AddWord(titleid, contentid) {
+        // 단어장에 추가
+        AddWord(title, content) {
             const token = localStorage["token"];
             if (!token) {
                 console.error('Token not found');
@@ -305,16 +288,22 @@ export default {
                     Authorization: 'JWT ' + token,
                 },
                 data: {
-                    title: titleid,
-                    content: contentid
+                    title,
+                    content
                 },
             })
             .then(response => {
                 console.log(response.status);
+                this.confirmModal = true;
             })
+            // <div>
+            //     <h2>${title}</h2>
+            //     <p>단어장에 추가되었습니다</p>
+            // </div>
             .catch(error => {
                 console.error(error);
-                // loginpage로 이동
+                this.$router.push({path:'/loginerror'});
+                // (/loginerror)로 이동
             });
         }
     }
