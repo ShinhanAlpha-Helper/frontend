@@ -4,7 +4,7 @@
           <div>
               <div class="sticky-top" style="padding-bottom:0px; background-color: #3F81D7; width: 100%; height: 82px;">
                   <input type="text" placeholder="메뉴 · 종목 검색" style="border-radius: 5px; margin-left: 20px; margin-top: 10px;">
-                  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style="border:none; background-color: #3F81D7;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                  <a class="btn btn-primary" @click="showSearch" role="button" style="border:none; background-color: #3F81D7;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
                   <i class="fa-regular fa-bell"></i>
                   <router-link to="/setting"><i class="fa-solid fa-gear" style="margin: 11px;"></i></router-link>
                   <div class="topnavs">
@@ -15,48 +15,36 @@
         </header>
         <!-- Modal -->
         <main>
-            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div>
-                            <div class="modal-header">
-                                <div class="mb-3">
-                                    <label for="title" class="col-form-label">검색창</label>
-                                    <textarea class="form-control" id="title" v-model="title"></textarea>
-                                </div>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <!-- <div class="modal-footer">
-                                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" @click="search">검색</button>
-                            </div> -->
-                            <div class="text-right">
-                                <button type="button" class="btn btn-primary" @click="search">검색</button>
-                            </div>
-                        </div>
+            <b-modal v-model="searchModal" hide-footer>
+                <div>
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">검색창</label>
+                        <textarea class="form-control" id="title" v-model="title"></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary" @click="search">검색</button>
+                    </div>
+                </div>
 
-                        <div>
-                            <div id="content">
-                                <p>{{ content }}</p>
-                                <div id="questionAdd" class="modal-footer" v-if="content">
-                                    <button class="btn btn-primary" @click="AddWord(title, content)">단어장에 추가</button>
-                                </div>
-                            </div>
+                <div>
+                    <div id="content">
+                        <p>{{ content }}</p>
+                        <div id="questionAdd" class="modal-footer" v-if="content">
+                            <button 
+                            class="btn btn-primary"
+                             @click="AddWord(title, content)
+                             ">단어장에 추가</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <b-modal id="modal-1" title="BootstrapVue" v-model="confirmModal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">'{{title}}'가<br> 단어장에 추가되었습니다.</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-footer">
-                            <router-link to="/vocamain"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">단어장으로 가기</button></router-link>
-                        </div>
-                    </div>
             </b-modal>
 
+            <b-modal  v-model="confirmModal" hide-footer>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">'{{title}}'가<br> 단어장에 추가되었습니다.</h1>
+                <div class="modal-footer">
+                    <router-link to="/vocamain"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">단어장으로 가기</button></router-link>
+                </div>
+            </b-modal>
 
             <div class="row">
                 <div class="col-4 side-left">
@@ -246,13 +234,30 @@ export default {
             title: '',
             content: '',
             confirmModal: false,
+            searchModal: false,
         }
     },
     created() {
-
+        
     },
+    mounted() {
+        const title = localStorage.getItem("title");
+        const content = localStorage.getItem("content");
+        if (title && content) {
+            this.title = title;
+            this.content = content;
+            localStorage.removeItem("title");
+            localStorage.removeItem("content");
 
+            this.AddWord(title, content);
+        }
+    },
     methods: {
+        showSearch() {
+            this.title = null;
+            this.content = null;
+            this.searchModal = true;
+        },
         // 단어 검색
         search() {
             axios({
@@ -280,6 +285,8 @@ export default {
             const token = localStorage["token"];
             if (!token) {
                 console.error('Token not found');
+                localStorage.setItem("title",title);
+                localStorage.setItem("content",content);
                 this.$router.push({path:'/loginerror'});
                 return;
             }
@@ -297,6 +304,7 @@ export default {
             })
             .then(response => {
                 console.log(response.status);
+                this.searchModal = false;
                 this.confirmModal = true;
             })
             .catch(error => {

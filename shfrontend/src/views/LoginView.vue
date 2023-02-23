@@ -60,18 +60,42 @@ export default {
                 password: this.password,
             }).then(response => {
                 localStorage.setItem("token", response.data.access);
-                this.$router.push({path:'/vocamain'});
-
-                const title = localStorage["title"];
-                const content = localStorage["content"];
-                if (localStorage.getItem('title')  !== null && localStorage.getItem('content')  !== null) {
-                    localStorage.setItem('title', title);
-                    localStorage.setItem('content',content);
+                if (localStorage.getItem("title") && localStorage.getItem("content")) {
+                    this.$router.push("/menu");
+                } else {
+                    this.$router.push({path:'/vocamain'});
                 }
-
-            }).catch(function () {  
+            }).catch(function (err) {
+                console.dir(err); 
                 alert("로그인 실패");
             })
+        },
+
+        AddWord(title, content) {
+            const token = localStorage["token"];
+            if (!token) {
+                console.error('Token not found');
+                this.$router.push({path:'/loginerror'});
+                return;
+            }
+            axios({
+                method: 'post',
+                // url: 'http://127.0.0.1:8000/note',
+                url: 'http://127.0.0.1:8000/api/note',
+                headers: {
+                    Authorization: 'JWT ' + token,
+                },
+                data: {
+                    title,
+                    content
+                },
+            })
+            .then(response => {
+            })
+            .catch(error => {
+                console.error(error);
+                // this.$router.push({path:'/loginerror'});
+            });
         }
     },
 

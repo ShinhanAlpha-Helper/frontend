@@ -80,7 +80,7 @@ export default {
                 this.bookmarks[i] = 0;
         })
         .catch(error => {
-            console.error(error);
+            console.log(error);
         });
     },
     methods: {
