@@ -88,7 +88,7 @@ p {
   margin: auto;
   margin-top: 20vh;
   position: relative;
-  bottom: 245px;
+  bottom: 205px;
   background: rgba(71, 58, 223, 1);
   padding: 3px;
 }

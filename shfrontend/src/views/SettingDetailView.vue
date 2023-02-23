@@ -177,7 +177,7 @@ p {
     position: relative;
     margin-right: 10px;
     top: 0px;
-    color: black;
+    color: rgba(46, 64, 81, 1);
 }
 .fa-chevron-right {
     color: grey;
