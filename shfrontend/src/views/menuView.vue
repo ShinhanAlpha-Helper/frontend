@@ -279,6 +279,7 @@ export default {
             const token = localStorage["token"];
             if (!token) {
                 console.error('Token not found');
+                this.$router.push({path:'/loginerror'});
                 return;
             }
             axios({
@@ -296,14 +297,9 @@ export default {
                 console.log(response.status);
                 this.confirmModal = true;
             })
-            // <div>
-            //     <h2>${title}</h2>
-            //     <p>단어장에 추가되었습니다</p>
-            // </div>
             .catch(error => {
                 console.error(error);
-                this.$router.push({path:'/loginerror'});
-                // (/loginerror)로 이동
+                // this.$router.push({path:'/loginerror'});
             });
         }
     }
