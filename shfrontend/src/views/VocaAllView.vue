@@ -68,8 +68,8 @@ export default {
         }
         axios({
             method: 'get',
-            // url: 'http://127.0.0.1:8000/note',
-            url: 'http://34.64.189.50/api/note',
+            url: 'http://127.0.0.1:8000/api/note',
+            // url: 'http://34.64.189.50/api/note',
             headers: {
                 Authorization: 'JWT ' + token,
             },
@@ -98,8 +98,8 @@ export default {
             }
             axios({
                 method: 'post',
-                // url: 'http://127.0.0.1:8000/note/bookmark',
-                url: 'http://34.64.189.50/api/note/bookmark',
+                url: 'http://127.0.0.1:8000/api/note/bookmark',
+                // url: 'http://34.64.189.50/api/note/bookmark',
                 headers: {
                     Authorization: 'JWT ' + token,
                 },
@@ -117,8 +117,8 @@ export default {
         delItem(noteid) {
             axios({
                 method: 'delete',
-                // url: 'http://127.0.0.1:8000/note',
-                url: 'http://34.64.189.50/api/note',
+                url: 'http://127.0.0.1:8000/api/note',
+                // url: 'http://34.64.189.50/api/note',
                 headers: {
                     Authorization: 'JWT ' + localStorage.token,
                 },

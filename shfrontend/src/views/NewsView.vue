@@ -93,7 +93,7 @@ export default {
         }
     },
     created() {
-        axios.get('http://34.64.189.50/api/news/domestic')
+        axios.get('http://127.0.0.1:8000/api/news/domestic')
         .then(response => {
             console.log(response.data.results);
             this.newspage = response.data.results.reverse();
@@ -101,14 +101,14 @@ export default {
     },
     methods: {
         domesticnews() {
-            axios.get('http://34.64.189.50/api/news/domestic')
+            axios.get('http://127.0.0.1:8000/api/news/domestic')
             .then(response => {
                 console.log(response.data.results);
                 this.newspage = response.data.results;
             });
         },
         overseasnews() {
-            axios.get('http://34.64.189.50/api/news/overseas')
+            axios.get('http://127.0.0.1:8000/api/news/overseas')
             .then(response => {
                 console.log(response.data.results);
                 this.newspage = response.data.results;
@@ -116,14 +116,14 @@ export default {
         },
 
         newsreload() {
-            // axios.post('http://127.0.0.1:8000/news/domestic')
-            axios.post('http://34.64.189.50/api/news/domestic')
+            axios.post('http://127.0.0.1:8000/api/news/domestic')
+            // axios.post('http://34.64.189.50/api/news/domestic')
             .then(response => {
                 console.log(response.status);
             });
 
-            // axios.post('http://127.0.0.1:8000/news/overseas')
-            axios.post('http://34.64.189.50/api/news/overseas')
+            axios.post('http://127.0.0.1:8000/api/news/overseas')
+            // axios.post('http://34.64.189.50/api/news/overseas')
             .then(response => {
                 console.log(response.status);
             });

@@ -65,7 +65,8 @@ export default {
     methods: {
         login() {
             console.log(this.username, this.password);
-            axios.post('http://34.64.189.50/api/token', {
+            // axios.post('http://34.64.189.50/api/token')
+            axios.post('http://127.0.0.1:8000/api/token', {
                 username: this.username,
                 password: this.password,
             }).then(response => {
@@ -90,7 +91,7 @@ export default {
             }
             axios({
                 method: 'post',
-                // url: 'http://127.0.0.1:8000/note',
+                // url: 'http://34.64.189.50/api/note',
                 url: 'http://127.0.0.1:8000/api/note',
                 headers: {
                     Authorization: 'JWT ' + token,
