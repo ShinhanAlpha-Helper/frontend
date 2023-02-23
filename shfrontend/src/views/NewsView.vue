@@ -176,18 +176,12 @@ export default {
             });
         },
         newsreload() {
-            axios({
-                methods: 'post',
-                url: 'http://127.0.0.1:8000/news/domestic',
-            })
+            axios.post('http://127.0.0.1:8000/news/domestic')
             .then(response => {
                 console.log(response.status);
             });
 
-            axios({
-                methods: 'post',
-                url: 'http://127.0.0.1:8000/news/overseas',
-            })
+            axios.post('http://127.0.0.1:8000/news/overseas')
             .then(response => {
                 console.log(response.status);
             });
@@ -268,3 +262,7 @@ export default {
         padding: 0 15px;
     }
 </style>
+
+<!-- <img alt="Vue logo" src="../assets/medal1.png">예수금<hr>
+<img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
+<img alt="Vue logo" src="../assets/medal3.png">공매도<hr> -->
