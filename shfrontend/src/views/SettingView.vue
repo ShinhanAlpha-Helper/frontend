@@ -124,7 +124,6 @@ div.contents {
     width: 300px;
     position: relative;
 }
-
 span {
     font-weight: bold;
     font-size: 15px;
@@ -153,6 +152,10 @@ p {
 .fa-circle-chevron-down {
     margin-left: 5px;
     color: grey;
+}
+
+a {
+    text-decoration: none;
 }
 
 
