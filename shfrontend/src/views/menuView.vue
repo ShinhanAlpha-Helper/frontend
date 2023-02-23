@@ -185,7 +185,7 @@
                         <p>지수/환율/시장지표</p><p>국내시장 매매동향</p><p>최신시황</p><p>글로벌경제지표</p>
                         <h6 id="list-item-6" style="padding-top: 15px; text-align:left;"><strong>이슈/일정</strong></h6>
                         <hr>                    
-                        <p>뉴스/공시</p><p>국내/해외 증시일정</p><p>해외주식 권리</p>
+                        <p><router-link to="/news" style="font-size: 16px; font-weight: normal;">뉴스/공시</router-link></p><p>국내/해외 증시일정</p><p>해외주식 권리</p>
                         <h6 id="list-item-6" style="padding-top: 15px; text-align:left;"><strong>디지털 자산</strong></h6>
                         <hr>                    
                         <p>디지털자산 시세</p><p>디지털자산 리서치</p><p>디지털자산 알아보기</p>
@@ -257,7 +257,8 @@ export default {
         search() {
             axios({
                 method: 'get',
-                url: `http://127.0.0.1:8000/dict?title=${this.title}`,
+                // url: `http://127.0.0.1:8000/dict?title=${this.title}`,
+                url: `http://127.0.0.1:8000/api/dict?title=${this.title}`,
                 // headers: {
                 //     Authorization: 'JWT '
                 // },
@@ -283,7 +284,8 @@ export default {
             }
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/note',
+                // url: 'http://127.0.0.1:8000/note',
+                url: 'http://127.0.0.1:8000/api/note',
                 headers: {
                     Authorization: 'JWT ' + token,
                 },
