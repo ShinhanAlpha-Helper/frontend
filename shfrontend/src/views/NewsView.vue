@@ -45,7 +45,7 @@
 
         <main>
             <div class="div" style="overflow-y: scroll; height:490px;">
-                <ul ref="news" style="list-style: none;" v-for="(item, i) in newspage.reverse()" :key="i">
+                <ul ref="news" style="list-style: none;" v-for="(item, i) in newspage" :key="i">
                     <li v-if="item.img != ''">
                         <span style="font-size: 8px;">{{ item.date }}    {{ item.date }}</span><br>
                         <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
@@ -96,7 +96,7 @@ export default {
         axios.get('http://34.64.189.50/api/news/domestic')
         .then(response => {
             console.log(response.data.results);
-            this.newspage = response.data.results;
+            this.newspage = response.data.results.reverse();
         });
     },
     methods: {
