@@ -29,7 +29,7 @@
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
                         <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
-                        <th><a href="#"><i class="fa-solid fa-power-off" @click="logout()"></i></a></th>
+                        <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
                 </table>
             </div>
@@ -38,33 +38,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
-    data() {
-        return {
-            userinfo: [],
-        };
-    },
-    methods: {
-        logout() {
-            // console.log(this.username, this.password);
-            axios.get('http://127.0.0.1:8000/api/token', {
-                headers: {
-                    Authorization: 'JWT ' + localStorage["token"],
-                }
-            }).then(response => {
-                this.userinfo = response.data.results;
-                userinfo.removeItem();
-                localStorage.removeItem("token");
-                // this.$router.push({path:'/login'});
-                // localStorage.clear();
-                alert('로그아웃 성공');
-            }).catch(function () {
-                alert("로그아웃 실패");
-            });
-        }
-    }
+
 }
 </script>
 

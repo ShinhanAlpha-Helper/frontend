@@ -23,6 +23,14 @@
                 <button type="button" class="btn btn-primary" @:click="login()">로그인</button>
             </div>
         </div>
+
+        <b-modal  v-model="failModal" hide-footer>
+            <div v-if="showModalfail" style="text-align: center;">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">로그인 실패</h1>
+            </div>
+        </b-modal>
+
+
         <footer>
             <div id="menu-wrapper">
                 <table>
@@ -48,6 +56,8 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            showModalfail: false,
+            failModal: false,
             username: null,
             password: null,
         };
@@ -65,9 +75,9 @@ export default {
                 } else {
                     this.$router.push({path:'/vocamain'});
                 }
-            }).catch(function (err) {
-                console.dir(err); 
-                alert("로그인 실패");
+            }).catch(() => {
+                this.showModalfail = true;
+                this.failModal = true;
             })
         },
 

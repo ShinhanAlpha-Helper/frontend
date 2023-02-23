@@ -6,11 +6,29 @@
                 회원가입
             </h3>          
         </header>
-        <div class="black-bg" v-if="showModal==true">
+        <b-modal  v-model="confirmModal" hide-footer>
+            <div v-if="showModalsucc">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3" style="text-align: center;">회원가입 성공</h1>
+                <div class="modal-footer">
+                    <router-link to="/login"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin">로그인하러 가기</button></router-link>
+                </div>
+            </div>
+        </b-modal>
+
+        <b-modal  v-model="failModal" hide-footer>
+            <div v-if="showModalfail" style="text-align: center;">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">회원가입 실패</h1>
+            </div>
+        </b-modal>
+
+        <!-- <div class="black-bg" v-if="showModal">
             <div class="white-bg">
                 <h4>회원가입 성공</h4>
+                <button 
+                    class="btn btn-primary"
+                >단어장에 추가</button>
             </div>
-        </div>
+        </div> -->
 
         <div class="signuppage">
             <form>
@@ -27,7 +45,7 @@
 
                 <br>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary" @:click="signup()">회원가입</button>
+                    <button type="button" class="btn btn-primary" @click="signup">회원가입</button>
                 </div>
             </form>
         </div>
@@ -56,7 +74,10 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            showModal: false,
+            showModalsucc: false,
+            showModalfail: false,
+            confirmModal: false,
+            failModal: false,
             inputusername: '',
             inputpassword: '',
             pwconfirm: '',
@@ -73,11 +94,12 @@ export default {
                 password: this.inputpassword,
                 password2: this.pwconfirm,
                 email: this.email,
-            }).then(function () {
-                this.showModal = true;
-                // this.$router.replace({path:'/login'});
-            }).catch(function () {
-                alert("회원가입 실패");
+            }).then(() => {
+                this.showModalsucc = true;
+                this.confirmModal = true;
+            }).catch(() => {
+                this.showModalfail = true;
+                this.failModal = true;
             })
         }
     }
@@ -87,6 +109,9 @@ export default {
 
 
 <style scoped>
+.btn.btn-primary {
+    background-color: #3F81D7;
+}
 .black-bg {
     width: 100%;
     height: 100%;
@@ -99,7 +124,9 @@ export default {
     border-radius: 8px;padding: 20px;
 }
 
-
+.btn.btn-secondary{
+    margin-right: 20px;
+}
     .background {
         background-color: #E9F1FE;
         height: 530px;
