@@ -73,8 +73,8 @@ export default {
     }
   },
   created() {
-    // axios.get('http://127.0.0.1:8000/note/rank/today')
-    axios.get('http://34.64.189.50/api/note/rank/today')
+    axios.get('http://127.0.0.1:8000/api/note/rank/today')
+    // axios.get('http://34.64.189.50/api/note/rank/today')
     .then(response => {
         console.log(response.data);
 
@@ -102,8 +102,8 @@ export default {
         
         thisWeek[i] = yyyy + '-' + mm + '-' + dd;
     }
-    // axios.get(`http://127.0.0.1:8000/note/rank/weekly?startdate=${thisWeek[0]}&lastdate=${thisWeek[6]}`)
-    axios.get(`http://34.64.189.50/api/note/rank/weekly?startdate=${thisWeek[0]}&lastdate=${thisWeek[6]}`)
+    axios.get(`http://127.0.0.1:8000/api/note/rank/weekly?startdate=${thisWeek[0]}&lastdate=${thisWeek[6]}`)
+    // axios.get(`http://34.64.189.50/api/note/rank/weekly?startdate=${thisWeek[0]}&lastdate=${thisWeek[6]}`)
     .then(response => {
         console.log(response.data);
 
