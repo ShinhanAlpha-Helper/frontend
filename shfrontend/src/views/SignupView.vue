@@ -27,7 +27,7 @@
 
                 <br>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary" @:click="signup()">회원가입</button>
+                    <button type="button" class="btn btn-primary" @click="signup()">회원가입</button>
                 </div>
             </form>
         </div>

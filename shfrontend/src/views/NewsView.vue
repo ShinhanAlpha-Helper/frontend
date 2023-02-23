@@ -12,13 +12,13 @@
                     <i class="fa-solid fa-magnifying-glass-plus" style="margin-right: 10px;"></i> <!--검색 기능 아이콘-->
                     <i class="fa-regular fa-bell" style="margin-right: 10px;"></i> <!--종 모양 아이콘-->
                     <button style="border: 1px solid black; border-radius: 5px; margin-right: 10px;">가</button>
-                    <button style="border: 0; background-color: #fff; margin-right: 10px;" @:click="newsreload()"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button style="border: 0; background-color: #fff; margin-right: 10px;" @click="newsreload()"><i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             </div>
 
             <div id="flexaround" style="padding-top: 20px;">
-                <div><a href="#" class="header_a" @:click="domesticnews()">국내</a></div>
-                <div><a href="#" class="header_a" @:click="overseasnews()">해외</a></div>
+                <div><a href="#" class="header_a" @click="domesticnews()">국내</a></div>
+                <div><a href="#" class="header_a" @click="overseasnews()">해외</a></div>
                 <div><a href="#" class="header_a">MY종목</a></div>
             </div>
             <div style="border-top: 1px solid black; margin: 16px 0;"></div>
@@ -48,13 +48,13 @@
                 <ul ref="news" style="list-style: none;" v-for="(item, i) in newspage.reverse()" :key="i">
                     <li v-if="item.img != ''">
                         <span style="font-size: 8px;">{{ item.date }}    {{ item.date }}</span><br>
-                        <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @:click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
+                        <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
                         <img :src="item.img" style="width: 70px; height: 40px;">
                     </li>
 
                     <li v-else>
                         <span style="font-size: 8px;">{{ item.date }}    {{ item.date }}</span><br>
-                        <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @:click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
+                        <a href="#" style="text-decoration: none; font-size: 12px; color: black;" @click="gopage(item.url)"><strong>{{ item.title }}</strong></a>
                         <img :src="defaultimage" style="width: 70px; height: 40px;">
                     </li>
                     <hr>
