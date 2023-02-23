@@ -238,7 +238,7 @@ export default {
         }
     },
     created() {
-        
+
     },
     mounted() {
         const title = localStorage.getItem("title");
