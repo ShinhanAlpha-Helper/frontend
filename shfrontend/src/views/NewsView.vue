@@ -104,14 +104,14 @@ export default {
             axios.get('http://127.0.0.1:8000/api/news/domestic')
             .then(response => {
                 console.log(response.data.results);
-                this.newspage = response.data.results;
+                this.newspage = response.data.results.reverse();
             });
         },
         overseasnews() {
             axios.get('http://127.0.0.1:8000/api/news/overseas')
             .then(response => {
                 console.log(response.data.results);
-                this.newspage = response.data.results;
+                this.newspage = response.data.results.reverse();
             });
         },
 
