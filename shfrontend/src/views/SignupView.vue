@@ -27,7 +27,7 @@
 
                 <br>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary" @:click="signup()">회원가입</button>
+                    <button type="button" class="btn btn-primary" @click="signup()">회원가입</button>
                 </div>
             </form>
         </div>
@@ -68,7 +68,7 @@ export default {
             console.log(this.inputusername, this.inputpassword, this.pwconfirm, this.email);
 
             // axios.post('http://127.0.0.1:8000/member/register', {
-            axios.post('http://127.0.0.1:8000/api/member/register', {
+            axios.post('http://34.64.189.50/api/member/register', {
                 username: this.inputusername,
                 password: this.inputpassword,
                 password2: this.pwconfirm,

@@ -263,7 +263,7 @@ export default {
             axios({
                 method: 'get',
                 // url: `http://127.0.0.1:8000/dict?title=${this.title}`,
-                url: `http://127.0.0.1:8000/api/dict?title=${this.title}`,
+                url: `http://34.64.189.50/api/dict?title=${this.title}`,
                 // headers: {
                 //     Authorization: 'JWT '
                 // },
@@ -293,7 +293,7 @@ export default {
             axios({
                 method: 'post',
                 // url: 'http://127.0.0.1:8000/note',
-                url: 'http://127.0.0.1:8000/api/note',
+                url: 'http://34.64.189.50/api/note',
                 headers: {
                     Authorization: 'JWT ' + token,
                 },
