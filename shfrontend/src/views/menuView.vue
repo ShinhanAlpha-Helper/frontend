@@ -4,7 +4,7 @@
           <div>
               <div class="sticky-top" style="padding-bottom:0px; background-color: #3F81D7; width:399px; height: 82px;">
                   <input type="text" placeholder="메뉴 · 종목 검색" style="border-radius: 5px; margin-left: 20px; margin-top: 10px;">
-                  <a class="btn btn-primary" @click="showSearch" role="button" style="border:none; background-color: #3F81D7;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                  <a class="btn btn-primary" @click="showSearch" role="button" style="border:none; background-color: #3F81D7; font-size: 20px; bottom: 2px;"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
                   <i class="fa-regular fa-bell"></i>
                   <router-link to="/setting"><i class="fa-solid fa-gear" style="margin: 11px;"></i></router-link>
                   <div class="topnavs">
@@ -188,7 +188,7 @@
                         <div style="background-color: #F7F8FA; padding: 15px; text-align:left;"><strong>투자플러스</strong></div>
                         <h6 id="list-item-7" style="padding-top: 15px; text-align:left;"><strong>투자플러스 서비스</strong></h6>
                         <hr>    
-                        <router-link to="/vocamain"><p>투자플러스</p><p id="note" style="display; text-align:left;">나만의 단어장</p></router-link>
+                        <p>투자플러스</p><router-link to="/vocamain"><p id="note" style="display; text-align:left;">나만의 단어장</p></router-link>
                         <h6 id="list-item-7" style="padding-top: 15px; text-align:left;"><strong>이슈</strong></h6>
                         <hr>    
                         <p>이슈진단</p><p>종목이슈체크</p>
@@ -334,6 +334,11 @@ export default {
   text-align: top; */
   text-align: center;
 }
+
+#note {
+    font-size: 15px;
+    font-weight: normal;
+}
 .page {
      margin: 0 auto;
     /* margin-top: 30px; */
@@ -364,7 +369,7 @@ header {
     margin: 10px 10px;
     display: inline-block;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
 }
 main {
     position: relative;
@@ -417,6 +422,18 @@ th {
     text-transform: uppercase;
     font-weight: bold;
     padding: 0 15px;
+}
+
+.fa-gear {
+    font-size: 20px;
+    position: relative;
+    bottom: 0.5px;
+    left: 2px;
+}
+.fa-bell {
+    font-size: 22px;
+    position: relative;
+    top: 1px;
 }
 </style>
 
