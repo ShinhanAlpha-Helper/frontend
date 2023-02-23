@@ -1,34 +1,36 @@
 <template>
     <div class="page">
         <header>
-                <router-link to="/"><i class="fa-solid fa-xmark fa-2x fa-pull-right"></i></router-link>
-                <h3>
-                    회원가입
-                </h3>          
-            </header>
-            
-    <div class="signuppage">
-    <form>
-        <div>
-            <input style="background-color: #E9F1FE;" type="text" v-model="inputusername" placeholder="아이디"/>
-            <div class="underline"></div>
-            <input style="background-color: #E9F1FE;" type="password" v-model="inputpassword" placeholder="비밀번호"/>
-            <div class="underline"></div>
-            <input style="background-color: #E9F1FE;" type="password" v-model="pwconfirm" placeholder="비밀번호 확인"/>
-            <div class="underline"></div>
-            <input style="background-color: #E9F1FE;" type="email" v-model="email" placeholder="E-mail"/>
-            <div class="underline"></div> 
+            <router-link to="/"><i class="fa-solid fa-xmark fa-2x fa-pull-right"></i></router-link>
+            <h3>
+                회원가입
+            </h3>          
+        </header>
+        <div class="black-bg" v-if="showModal==true">
+            <div class="white-bg">
+                <h4>회원가입 성공</h4>
+            </div>
         </div>
-        
-    
-    
-        <br>
-        <div class="text-right">
-            <button type="button" class="btn btn-primary" @:click="signup()">회원가입</button>
+
+        <div class="signuppage">
+            <form>
+                <div>
+                    <input style="background-color: #E9F1FE;" type="text" v-model="inputusername" placeholder="아이디"/>
+                    <div class="underline"></div>
+                    <input style="background-color: #E9F1FE;" type="password" v-model="inputpassword" placeholder="비밀번호"/>
+                    <div class="underline"></div>
+                    <input style="background-color: #E9F1FE;" type="password" v-model="pwconfirm" placeholder="비밀번호 확인"/>
+                    <div class="underline"></div>
+                    <input style="background-color: #E9F1FE;" type="email" v-model="email" placeholder="E-mail"/>
+                    <div class="underline"></div> 
+                </div>
+
+                <br>
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary" @:click="signup()">회원가입</button>
+                </div>
+            </form>
         </div>
-    </form>
-    
-    </div>
         <footer>
             <div id="menu-wrapper">
                 <table>
@@ -45,6 +47,7 @@
             </div>
         </footer>
     </div>
+
 </template>
 
 <script>
@@ -53,6 +56,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            showModal: false,
             inputusername: '',
             inputpassword: '',
             pwconfirm: '',
@@ -70,7 +74,7 @@ export default {
                 password2: this.pwconfirm,
                 email: this.email,
             }).then(function () {
-                alert("회원가입 성공");
+                this.showModal = true;
                 // this.$router.replace({path:'/login'});
             }).catch(function () {
                 alert("회원가입 실패");
@@ -83,6 +87,19 @@ export default {
 
 
 <style scoped>
+.black-bg {
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: flexed; padding: 20px;
+}
+.white-bg {
+    width: 100%;
+    background: white;
+    border-radius: 8px;padding: 20px;
+}
+
+
     .background {
         background-color: #E9F1FE;
         height: 530px;
