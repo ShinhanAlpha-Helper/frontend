@@ -20,7 +20,7 @@
                 <router-link to="/signup">회원가입</router-link>
             </div>
             <div>
-                <button type="button" class="btn btn-primary" @:click="login()">로그인</button>
+                <button type="button" class="btn btn-primary" @click="login()">로그인</button>
             </div>
         </div>
 
@@ -65,7 +65,7 @@ export default {
     methods: {
         login() {
             console.log(this.username, this.password);
-            axios.post('http://127.0.0.1:8000/api/token', {
+            axios.post('http://34.64.189.50/api/token', {
                 username: this.username,
                 password: this.password,
             }).then(response => {

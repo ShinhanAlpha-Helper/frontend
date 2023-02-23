@@ -6,7 +6,7 @@
         </header>
         <nav>
             <li v-for="item in list" :key="item.title">
-                <div class="list" style="cursor: pointer;" onclick="location.href=window.location.href+'/detail'">
+                <router-link to="/setting/detail"><div class="list" style="cursor: pointer;">
                     <img :src='require(`@/assets/settings/${item.src}`)'>
                     <div class="contents">
                         <span>{{ item.title }}</span>
@@ -15,7 +15,7 @@
                     </div>
                     <hr>
                     <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                </div></router-link>
             </li>
         </nav>
     </div>
