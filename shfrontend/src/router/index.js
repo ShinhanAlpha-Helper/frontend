@@ -89,14 +89,14 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/splash',
-    name: 'splash',
-    component: SplashView
+    path: '/home',
+    name: 'home',
+    component: HomeView
   },
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'splash',
+    component: SplashView
   },
   {
     path: '/setting',

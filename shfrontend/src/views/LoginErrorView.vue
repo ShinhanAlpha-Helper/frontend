@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <router-link to="/"><i class="fa-solid fa-xmark fa-2x fa-pull-right" style="margin-right: 20px;"></i></router-link>
+            <router-link to="/home"><i class="fa-solid fa-xmark fa-2x fa-pull-right" style="margin-right: 20px;"></i></router-link>
             <h3>
                 나만의 단어장
             </h3>
@@ -18,7 +18,7 @@
                 <table>
                     <tr>
                         <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
-                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
+                        <th><a href="#"><router-link to="/home">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>

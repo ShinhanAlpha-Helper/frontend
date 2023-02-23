@@ -39,11 +39,11 @@
                 <table>
                     <tr>
                         <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
-                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
+                        <th><a href="#"><router-link to="/home">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
+                        <th><a href="#">로그아웃</a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
             </table>
