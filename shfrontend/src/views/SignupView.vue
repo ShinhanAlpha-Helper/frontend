@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <router-link to="/"><i class="fa-solid fa-xmark fa-2x fa-pull-right"></i></router-link>
+            <router-link to="/home"><i class="fa-solid fa-xmark fa-2x fa-pull-right"></i></router-link>
             <h3>
                 회원가입
             </h3>          
@@ -20,15 +20,6 @@
                 <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">회원가입 실패</h1>
             </div>
         </b-modal>
-
-        <!-- <div class="black-bg" v-if="showModal">
-            <div class="white-bg">
-                <h4>회원가입 성공</h4>
-                <button 
-                    class="btn btn-primary"
-                >단어장에 추가</button>
-            </div>
-        </div> -->
 
         <div class="signuppage">
             <form>
@@ -53,8 +44,8 @@
             <div id="menu-wrapper">
                 <table>
                     <tr>
-                        <th><a href="#"><router-link to="/">X</router-link></a></th>
-                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
+                        <th><a href="#"><router-link to="/home">X</router-link></a></th>
+                        <th><a href="#"><router-link to="/home">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>

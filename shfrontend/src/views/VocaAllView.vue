@@ -17,7 +17,7 @@
                     <div v-for="(note, i) in notes" :key="note.i">
                         <div class="voca-item">
                             <div class="left-text"> <!-- 'fas': 1 색깔, 0이면 없어짐 -->
-                                <i class="far fa-star" style="color: grey;" @click="toggleBookmark($event, note.id)"></i>
+                                <i class="far fa-star" style="color: gray;" @click="toggleBookmark($event, note.id)"></i>
                                 <strong class="voca-text">{{ note.title }}
                                     <br>
                                     <div class="voca-mean">{{ note.content }}</div>
@@ -36,11 +36,11 @@
                 <table>
                     <tr>
                         <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
-                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
+                        <th><a href="#"><router-link to="/home">홈</router-link></a></th>
                         <th><a href="#">계좌<br>개설</a></th>
                         <th><a href="#">인증<br>센터</a></th>
                         <th><a href="#">챗봇</a></th>
-                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
+                        <th><a href="#">로그아웃</a></th>
                         <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
                     </tr>
                 </table>
