@@ -1,8 +1,8 @@
 <template>
     <div class="page">
         <header style="margin-top: 30px; text-align: right;">
-            <a class="btn btn-primary" @click="showSearch"><i class="fa-solid fa-magnifying-glass-plus fa-2x" style="margin-right: 10px;"></i></a>
-            <router-link to="/news"><i class="fa-solid fa-xmark fa-2x" style="margin-right: 10px;"></i></router-link>
+            <a @click="showSearch"><i class="fa-solid fa-magnifying-glass-plus fa-2x" style="margin-right: 10px;"></i></a>
+            <router-link to="/news"><i class="fa-solid fa-xmark fa-2x" style="margin-right: 10px; color:black;"></i></router-link>
         </header>
         <main>
             <!-- Modal -->

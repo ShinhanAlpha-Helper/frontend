@@ -186,7 +186,8 @@ h3 {
 }
 
 .voca-del {
-    margin-left: auto;
+    /* margin-left: auto; */
+    padding: 15px;
     font-size: 11px;
 }
 

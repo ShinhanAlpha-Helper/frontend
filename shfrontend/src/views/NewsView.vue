@@ -3,7 +3,7 @@
         <header>
             <div id="flexbetween">
                 <div id="headleft">
-                    <router-link to="/menu"><i class="fa-solid fa-chevron-left fa-pull-left"></i></router-link>
+                    <router-link to="/menu"><i class="fa-solid fa-chevron-left fa-pull-left" style="margin-left: 10px;"></i></router-link>
                     <div style="display: inline-block; padding-left: 10px;">뉴스/공시</div>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
