@@ -18,7 +18,7 @@ import menuView from '../views/menuView.vue'
 import BookmarkView from '../views/BookmarkView.vue'
 
 import NewsView from '../views/NewsView.vue'
-// import NewsDetailView from '../views/NewsDetailView.vue'
+import NewsDetailView from '../views/NewsDetailView.vue'
 
 
 const routes = [
@@ -121,11 +121,11 @@ const routes = [
     name: 'news',
     component: NewsView
   },
-  // {
-  //   path: '/newsdetail',
-  //   name: 'newsdetail',
-  //   component: NewsDetailView
-  // },
+  {
+    path: '/newsdetail',
+    name: 'newsdetail',
+    component: NewsDetailView
+  },
 ]
 
 const router = createRouter({

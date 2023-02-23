@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .modal-dialog.modal-dialog-centered {
   display: inline-block;
   text-align: left;
