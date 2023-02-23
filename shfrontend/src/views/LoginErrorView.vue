@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header>
-            <router-link to="/"><i class="fa-solid fa-xmark fa-2x fa-pull-right"></i></router-link>
+            <router-link to="/"><i class="fa-solid fa-xmark fa-2x fa-pull-right" style="margin-right: 20px;"></i></router-link>
             <h3>
                 나만의 단어장
             </h3>
@@ -13,22 +13,22 @@
             <router-link to="/login" class="btn_text">로그인하러 가기</router-link>
         </button>
         <!-- <v-btn rounded color="blue">로그인하러 가기</v-btn> -->
+        <footer>
+            <div id="menu-wrapper">
+                <table>
+                    <tr>
+                        <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
+                        <th><a href="#"><router-link to="/">홈</router-link></a></th>
+                        <th><a href="#">계좌<br>개설</a></th>
+                        <th><a href="#">인증<br>센터</a></th>
+                        <th><a href="#">챗봇</a></th>
+                        <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
+                        <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
+                    </tr>
+                </table>
+            </div>
+        </footer>
     </div>
-    <footer>
-        <div id="menu-wrapper">
-            <table>
-                <tr>
-                    <th><a href="#"><router-link to="/menu"><i class="fa-solid fa-bars"></i></router-link></a></th>
-                    <th><a href="#"><router-link to="/">홈</router-link></a></th>
-                    <th><a href="#">계좌<br>개설</a></th>
-                    <th><a href="#">인증<br>센터</a></th>
-                    <th><a href="#">챗봇</a></th>
-                    <th><a href="#"><router-link to="/login">로그인</router-link></a></th>
-                    <th><a href="#"><i class="fa-solid fa-power-off"></i></a></th>
-                </tr>
-            </table>
-        </div>
-    </footer>
 </template>
 
 <script>
@@ -39,14 +39,18 @@ export default {
 
 <style scoped>
 .page {
+    margin: 0 auto;
     margin-top: 30px;
+    max-width: 375px;
 }
 .page header i {
     margin-left: 20px;
 }
 h3 {
     font-size: 15;
-    margin-right:50px;
+    text-align: center;
+    margin-left: 50px;
+    /* margin-right:0px; */
 }
 .text {
     color: #FB0000;
