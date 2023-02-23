@@ -60,7 +60,15 @@ export default {
                 password: this.password,
             }).then(response => {
                 localStorage.setItem("token", response.data.access);
-                this.$router.replace({path:'/vocamain'});
+                this.$router.push({path:'/vocamain'});
+
+                const title = localStorage["title"];
+                const content = localStorage["content"];
+                if (localStorage.getItem('title')  !== null && localStorage.getItem('content')  !== null) {
+                    localStorage.setItem('title', title);
+                    localStorage.setItem('content',content);
+                }
+
             }).catch(function () {  
                 alert("로그인 실패");
             })
