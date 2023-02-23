@@ -15,14 +15,30 @@
         <div class="d-flex justify-content-center">
             <b-tabs content-class="mt-3">
                 <b-tab title="오늘" active>
-                        <img alt="Vue logo" src="../assets/medal1.png">예수금<hr>
-                        <img alt="Vue logo" src="../assets/medal2.png">상한가<hr>
-                        <img alt="Vue logo" src="../assets/medal3.png">공매도<hr>
+                    <template v-for="(item, i) in todayranking" :key="i">
+                        <div v-if="i + 1 == 1">
+                            <img alt="Vue logo" src="../assets/medal1.png">{{ item.title }}<hr>
+                        </div>
+                        <div v-if="i + 1 == 2">
+                            <img alt="Vue logo" src="../assets/medal2.png">{{ item.title }}<hr>
+                        </div>
+                        <div v-if="i + 1 == 3">
+                            <img alt="Vue logo" src="../assets/medal3.png">{{ item.title }}<hr>
+                        </div>
+                    </template>
                 </b-tab>
-                <b-tab title="주간">
-                        <img alt="Vue logo" src="../assets/medal1.png" >인플레이션<hr>
-                        <img alt="Vue logo" src="../assets/medal2.png">선물<hr>
-                        <img alt="Vue logo" src="../assets/medal3.png">공모주<hr>
+                <b-tab ref="week" title="주간">
+                    <template v-for="(item, i) in weeklyranking" :key="i">
+                        <div v-if="i + 1 == 1">
+                            <img alt="Vue logo" src="../assets/medal1.png">{{ item.title }}<hr>
+                        </div>
+                        <div v-if="i + 1 == 2">
+                            <img alt="Vue logo" src="../assets/medal2.png">{{ item.title }}<hr>
+                        </div>
+                        <div v-if="i + 1 == 3">
+                            <img alt="Vue logo" src="../assets/medal3.png">{{ item.title }}<hr>
+                        </div>
+                    </template>
                 </b-tab>
             </b-tabs>
         </div>
@@ -47,8 +63,52 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
-  data() { /* ... */ },
+  data() {
+    return {
+        todayranking: [],
+        weeklyranking: [],
+    }
+  },
+  created() {
+    axios.get('http://127.0.0.1:8000/note/rank/today')
+    .then(response => {
+        console.log(response.data);
+
+        this.todayranking = response.data;
+        console.log(this.todayranking);
+    });
+
+    // 주간 랭킹
+    var currentDay = new Date();  
+    var theYear = currentDay.getFullYear();
+    var theMonth = currentDay.getMonth();
+    var theDate  = currentDay.getDate();
+    var theDayOfWeek = currentDay.getDay();
+    
+    var thisWeek = [];
+    
+    for(var i=0; i<7; i++) {
+        var resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
+        var yyyy = resultDay.getFullYear();
+        var mm = Number(resultDay.getMonth()) + 1;
+        var dd = resultDay.getDate();
+        
+        mm = String(mm).length === 1 ? '0' + mm : mm;
+        dd = String(dd).length === 1 ? '0' + dd : dd;
+        
+        thisWeek[i] = yyyy + '-' + mm + '-' + dd;
+    }
+    axios.get(`http://127.0.0.1:8000/note/rank/weekly?startdate=${thisWeek[0]}&lastdate=${thisWeek[6]}`)
+    .then(response => {
+        console.log(response.data);
+
+        this.weeklyranking = response.data;
+        console.log(this.weeklyranking);
+    });    
+  },
   compatConfig: { MODE: 3 }
 }
 </script>
